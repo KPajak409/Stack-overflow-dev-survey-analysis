@@ -3,6 +3,7 @@
 ## Drop unnecessary columns
 - Q120 - empty question in schema filled with one unique value without nulls, possibly consent to processing data.
 - SurveyLength, SurveyEase question about the respondent's feelings after completing the survey may be omitted.
+- SOAI long strings containing user opinions about AI, great for NLP, not exactly for this project
 ## Remove duplicate and Incomplete Cases
 - Removing rows where more than 60% of columns are null
 - There isn't any duplicates
@@ -40,49 +41,49 @@ TechList ✅ checked input answers <br>
 BuyNewTool ✅ checked input answers <br>
 Country ❌ <br>
 Currency ❌ <br>
-CompTotal ❌ <br>
+CompTotal ✅ casted to int, removed unreal values <br>
 LanguageHaveWorkedWith ✅ checked input answers <br>
-LanguageWantToWorkWith ❌ <br>
-DatabaseHaveWorkedWith ❌ <br>
-DatabaseWantToWorkWith ❌ <br>
-PlatformHaveWorkedWith ❌ <br>
-PlatformWantToWorkWith ❌ <br>
-WebframeHaveWorkedWith ❌ <br>
-WebframeWantToWorkWith ❌ <br>
-MiscTechHaveWorkedWith ❌ <br>
-MiscTechWantToWorkWith ❌ <br>
-ToolsTechHaveWorkedWith ❌ <br>
-ToolsTechWantToWorkWith ❌ <br>
-NEWCollabToolsHaveWorkedWith ❌ <br>
-NEWCollabToolsWantToWorkWith ❌ <br>
-OpSysPersonal use ❌ <br>
-OpSysProfessional use ❌ <br>
-OfficeStackAsyncHaveWorkedWith ❌ <br>
-OfficeStackAsyncWantToWorkWith ❌ <br>
-OfficeStackSyncHaveWorkedWith ❌ <br>
-OfficeStackSyncWantToWorkWith ❌ <br>
-AISearchHaveWorkedWith ❌ <br>
-AISearchWantToWorkWith ❌ <br>
-AIDevHaveWorkedWith ❌ <br>
-AIDevWantToWorkWith ❌ <br>
+LanguageWantToWorkWith ❌ user inputs check omitted <br>
+DatabaseHaveWorkedWith ❌ user inputs check omitted <br>
+DatabaseWantToWorkWith ❌ user inputs check omitted <br>
+PlatformHaveWorkedWith ❌ user inputs check omitted <br>
+PlatformWantToWorkWith ❌ user inputs check omitted <br>
+WebframeHaveWorkedWith ❌ user inputs check omitted <br>
+WebframeWantToWorkWith ❌ user inputs check omitted <br>
+MiscTechHaveWorkedWith ❌ user inputs check omitted <br>
+MiscTechWantToWorkWith ❌ user inputs check omitted <br>
+ToolsTechHaveWorkedWith ❌ user inputs check omitted <br>
+ToolsTechWantToWorkWith ❌ user inputs check omitted <br>
+NEWCollabToolsHaveWorkedWith ❌ user inputs check omitted <br>
+NEWCollabToolsWantToWorkWith ❌ user inputs check omitted <br>
+OpSysPersonal use ❌ user inputs check omitted <br>
+OpSysProfessional use ❌ user inputs check omitted <br>
+OfficeStackAsyncHaveWorkedWith ❌ user inputs check omitted <br>
+OfficeStackAsyncWantToWorkWith ❌ user inputs check omitted <br>
+OfficeStackSyncHaveWorkedWith ❌ user inputs check omitted <br>
+OfficeStackSyncWantToWorkWith ❌ user inputs check omitted <br>
+AISearchHaveWorkedWith ❌ user inputs check omitted <br>
+AISearchWantToWorkWith ❌ user inputs check omitted <br>
+AIDevHaveWorkedWith ❌ user inputs check omitted <br>
+AIDevWantToWorkWith ❌ user inputs check omitted <br>
 NEWSOSites ❌ <br>
 SOVisitFreq ❌ <br>
 SOAccount ❌ <br>
 SOPartFreq ❌ <br>
 SOComm ❌ <br>
-SOAI ❌ <br>
+SOAI ❌ Column contains various users opinions about ai, can be great information source for semantic analysis, but for now will be omitted<br>
 AISelect ❌ <br>
 AISent ❌ <br>
-AIAcc ❌ <br>
+AIAcc ❌ user inputs check omitted <br>
 AIBen ❌ <br>
-AIToolInterested in Using ❌ <br>
-AIToolCurrently Using ❌ <br>
-AIToolNot interested in Using ❌ <br>
-AINextVery different ❌ <br>
-AINextNeither different nor similar ❌ <br>
-AINextSomewhat similar ❌ <br>
-AINextVery similar ❌ <br>
-AINextSomewhat different ❌ <br>
+AIToolInterested in Using ❌ user inputs check omitted <br>
+AIToolCurrently Using ❌ user inputs check omitted <br>
+AIToolNot interested in Using ❌ user inputs check omitted <br>
+AINextVery different ❌ user inputs check omitted <br>
+AINextNeither different nor similar ❌ user inputs check omitted <br>
+AINextSomewhat similar ❌ user inputs check omitted <br>
+AINextVery similar ❌ user inputs check omitted <br>
+AINextSomewhat different ❌ user inputs check omitted <br>
 TBranch ❌ <br>
 ICorPM ❌ <br>
 WorkExp ❌ <br>
