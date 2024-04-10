@@ -20,90 +20,90 @@
 ## Remove outliers
 
 ## Columns checked/processed/removed
-ResponseId ✅ unique values
-Q120 ✅ removed
-MainBranch ❌
-Age ❌
-Employment ❌
-RemoteWork ❌
-CodingActivities ✅ checked input answers 
-EdLevel ❌ 
-LearnCode ✅ checked input answers
-LearnCodeOnline ✅ checked input answers
-LearnCodeCoursesCert ✅ checked input answers
-YearsCode ❌
-YearsCodePro ❌
-DevType ✅ checked input answers
-OrgSize ❌
-PurchaseInfluence ❌
-TechList ✅ checked input answers
-BuyNewTool ✅ checked input answers
-Country ❌
-Currency ❌
-CompTotal ❌
-LanguageHaveWorkedWith ✅ checked input answers
-LanguageWantToWorkWith ❌
-DatabaseHaveWorkedWith ❌
-DatabaseWantToWorkWith ❌
-PlatformHaveWorkedWith ❌
-PlatformWantToWorkWith ❌
-WebframeHaveWorkedWith ❌
-WebframeWantToWorkWith ❌
-MiscTechHaveWorkedWith ❌
-MiscTechWantToWorkWith ❌
-ToolsTechHaveWorkedWith ❌
-ToolsTechWantToWorkWith ❌
-NEWCollabToolsHaveWorkedWith ❌
-NEWCollabToolsWantToWorkWith ❌
-OpSysPersonal use ❌
-OpSysProfessional use ❌
-OfficeStackAsyncHaveWorkedWith ❌
-OfficeStackAsyncWantToWorkWith ❌
-OfficeStackSyncHaveWorkedWith ❌
-OfficeStackSyncWantToWorkWith ❌
-AISearchHaveWorkedWith ❌
-AISearchWantToWorkWith ❌
-AIDevHaveWorkedWith ❌
-AIDevWantToWorkWith ❌
-NEWSOSites ❌
-SOVisitFreq ❌
-SOAccount ❌
-SOPartFreq ❌
-SOComm ❌
-SOAI ❌
-AISelect ❌
-AISent ❌
-AIAcc ❌
-AIBen ❌
-AIToolInterested in Using ❌
-AIToolCurrently Using ❌
-AIToolNot interested in Using ❌
-AINextVery different ❌
-AINextNeither different nor similar ❌
-AINextSomewhat similar ❌
-AINextVery similar ❌
-AINextSomewhat different ❌
-TBranch ❌
-ICorPM ❌
-WorkExp ❌
-Knowledge_1 ❌
-Knowledge_2 ❌
-Knowledge_3 ❌
-Knowledge_4 ❌
-Knowledge_5 ❌
-Knowledge_6 ❌
-Knowledge_7 ❌
-Knowledge_8 ❌
-Frequency_1 ❌
-Frequency_2 ❌
-Frequency_3 ❌
-TimeSearching ❌
-TimeAnswering ❌
-ProfessionalTech ❌
-Industry ❌
-SurveyLength ✅ removed
-SurveyEase ✅ removed
-ConvertedCompYearly ❌
+ResponseId ✅ unique values <br>
+Q120 ✅ removed <br>
+MainBranch ❌ <br>
+Age ❌ <br>
+Employment ❌ <br>
+RemoteWork ❌ <br>
+CodingActivities ✅ checked input answers <br> 
+EdLevel ❌ <br> 
+LearnCode ✅ checked input answers <br>
+LearnCodeOnline ✅ checked input answers <br>
+LearnCodeCoursesCert ✅ checked input answers <br>
+YearsCode ❌ <br>
+YearsCodePro ❌ <br>
+DevType ✅ checked input answers <br>
+OrgSize ❌ <br>
+PurchaseInfluence ❌ <br>
+TechList ✅ checked input answers <br>
+BuyNewTool ✅ checked input answers <br>
+Country ❌ <br>
+Currency ❌ <br>
+CompTotal ❌ <br>
+LanguageHaveWorkedWith ✅ checked input answers <br>
+LanguageWantToWorkWith ❌ <br>
+DatabaseHaveWorkedWith ❌ <br>
+DatabaseWantToWorkWith ❌ <br>
+PlatformHaveWorkedWith ❌ <br>
+PlatformWantToWorkWith ❌ <br>
+WebframeHaveWorkedWith ❌ <br>
+WebframeWantToWorkWith ❌ <br>
+MiscTechHaveWorkedWith ❌ <br>
+MiscTechWantToWorkWith ❌ <br>
+ToolsTechHaveWorkedWith ❌ <br>
+ToolsTechWantToWorkWith ❌ <br>
+NEWCollabToolsHaveWorkedWith ❌ <br>
+NEWCollabToolsWantToWorkWith ❌ <br>
+OpSysPersonal use ❌ <br>
+OpSysProfessional use ❌ <br>
+OfficeStackAsyncHaveWorkedWith ❌ <br>
+OfficeStackAsyncWantToWorkWith ❌ <br>
+OfficeStackSyncHaveWorkedWith ❌ <br>
+OfficeStackSyncWantToWorkWith ❌ <br>
+AISearchHaveWorkedWith ❌ <br>
+AISearchWantToWorkWith ❌ <br>
+AIDevHaveWorkedWith ❌ <br>
+AIDevWantToWorkWith ❌ <br>
+NEWSOSites ❌ <br>
+SOVisitFreq ❌ <br>
+SOAccount ❌ <br>
+SOPartFreq ❌ <br>
+SOComm ❌ <br>
+SOAI ❌ <br>
+AISelect ❌ <br>
+AISent ❌ <br>
+AIAcc ❌ <br>
+AIBen ❌ <br>
+AIToolInterested in Using ❌ <br>
+AIToolCurrently Using ❌ <br>
+AIToolNot interested in Using ❌ <br>
+AINextVery different ❌ <br>
+AINextNeither different nor similar ❌ <br>
+AINextSomewhat similar ❌ <br>
+AINextVery similar ❌ <br>
+AINextSomewhat different ❌ <br>
+TBranch ❌ <br>
+ICorPM ❌ <br>
+WorkExp ❌ <br>
+Knowledge_1 ❌ <br>
+Knowledge_2 ❌ <br>
+Knowledge_3 ❌ <br>
+Knowledge_4 ❌ <br>
+Knowledge_5 ❌ <br>
+Knowledge_6 ❌ <br>
+Knowledge_7 ❌ <br>
+Knowledge_8 ❌ <br>
+Frequency_1 ❌ <br>
+Frequency_2 ❌ <br>
+Frequency_3 ❌ <br>
+TimeSearching ❌ <br>
+TimeAnswering ❌ <br>
+ProfessionalTech ❌ <br>
+Industry ❌ <br>
+SurveyLength ✅ removed <br>
+SurveyEase ✅ removed <br>
+ConvertedCompYearly ❌ <br>
 
 
 # Conclusions
