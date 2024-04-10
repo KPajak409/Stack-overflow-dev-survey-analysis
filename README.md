@@ -18,3 +18,93 @@
 - CompTotal - the question is answered by user input which lead to some unreal answers
 
 ## Remove outliers
+
+## Columns checked/processed/removed
+ResponseId ✅ unique values
+Q120 ✅ removed
+MainBranch ❌
+Age ❌
+Employment ❌
+RemoteWork ❌
+CodingActivities ✅ checked input answers 
+EdLevel ❌ 
+LearnCode ✅ checked input answers
+LearnCodeOnline ✅ checked input answers
+LearnCodeCoursesCert ✅ checked input answers
+YearsCode ❌
+YearsCodePro ❌
+DevType ✅ checked input answers
+OrgSize ❌
+PurchaseInfluence ❌
+TechList ✅ checked input answers
+BuyNewTool ✅ checked input answers
+Country ❌
+Currency ❌
+CompTotal ❌
+LanguageHaveWorkedWith ✅ checked input answers
+LanguageWantToWorkWith ❌
+DatabaseHaveWorkedWith ❌
+DatabaseWantToWorkWith ❌
+PlatformHaveWorkedWith ❌
+PlatformWantToWorkWith ❌
+WebframeHaveWorkedWith ❌
+WebframeWantToWorkWith ❌
+MiscTechHaveWorkedWith ❌
+MiscTechWantToWorkWith ❌
+ToolsTechHaveWorkedWith ❌
+ToolsTechWantToWorkWith ❌
+NEWCollabToolsHaveWorkedWith ❌
+NEWCollabToolsWantToWorkWith ❌
+OpSysPersonal use ❌
+OpSysProfessional use ❌
+OfficeStackAsyncHaveWorkedWith ❌
+OfficeStackAsyncWantToWorkWith ❌
+OfficeStackSyncHaveWorkedWith ❌
+OfficeStackSyncWantToWorkWith ❌
+AISearchHaveWorkedWith ❌
+AISearchWantToWorkWith ❌
+AIDevHaveWorkedWith ❌
+AIDevWantToWorkWith ❌
+NEWSOSites ❌
+SOVisitFreq ❌
+SOAccount ❌
+SOPartFreq ❌
+SOComm ❌
+SOAI ❌
+AISelect ❌
+AISent ❌
+AIAcc ❌
+AIBen ❌
+AIToolInterested in Using ❌
+AIToolCurrently Using ❌
+AIToolNot interested in Using ❌
+AINextVery different ❌
+AINextNeither different nor similar ❌
+AINextSomewhat similar ❌
+AINextVery similar ❌
+AINextSomewhat different ❌
+TBranch ❌
+ICorPM ❌
+WorkExp ❌
+Knowledge_1 ❌
+Knowledge_2 ❌
+Knowledge_3 ❌
+Knowledge_4 ❌
+Knowledge_5 ❌
+Knowledge_6 ❌
+Knowledge_7 ❌
+Knowledge_8 ❌
+Frequency_1 ❌
+Frequency_2 ❌
+Frequency_3 ❌
+TimeSearching ❌
+TimeAnswering ❌
+ProfessionalTech ❌
+Industry ❌
+SurveyLength ✅ removed
+SurveyEase ✅ removed
+ConvertedCompYearly ❌
+
+
+# Conclusions
+- User inputs in most questions were trimmed by Stack overflow
