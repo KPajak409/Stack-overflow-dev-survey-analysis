@@ -6,20 +6,20 @@
 - SOAI long strings containing user opinions about AI, great for NLP, not exactly for this project.
 - YearsCodePro - a lot of nulls to handle, very similar to previous YearsCode. The only difference is this question doesn't include coding years during education.
 ## Remove duplicate and Incomplete Cases
-- Removing rows where more than 60% of columns are null
-- There isn't any duplicates
+- Removing rows where more than 60% of columns are null.
+- There isn't any duplicates.
 ## Threat null values
-- For now: nulls in columns containing text data, are replaced by 'NA' which means Not available/Not answered
-- YearsCode - removed rows with nulls
-- 
+- Rows where most of the values are nulls, are removed.
+- For now: nulls in columns containing text data, are replaced by 'NA' which means Not available/Not answered.
+- YearsCode - removed rows with nulls.
 ## Handle data types
-- ToDO - most importantly check columns with numeric values
+- YearsCode - categorized
 ## Remove nonsense Answers and Unreadable data
 - CodingActivities was checked because of possibility of taking user inputs, but their answers aren't mentioned in data
 - LearnCode the same as above
 - LearnCodeOnline - column contains one extra value which is not mentioned in possible answers of pdf version of survey: "Formal documentation provided by the owner of the tech". Additionally nonsense answer which is "Click to write Choice 20". Like above user inputs are trimmed.
 - LearnCodeCoursesCert as above, user inputs trimmed
-- CompTotal - the question is answered by user input which lead to some unreal answers
+- CompTotal - the question is answered by the user, leading to unrealistic answers, rows with CompTotal above $1 million are removed to get rid of outliers and reduce the influence of high earners on further analysis.
 
 ## Remove outliers
 
