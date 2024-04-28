@@ -4,41 +4,39 @@ Data utilized in this project comes from widely accesible source i.e [Stack Over
 This project is going to analyze data from survey taken in 2023. Stack Overflow has already done [analysis](https://survey.stackoverflow.co/2023/) on this survey, but there lays more valuable informations inside this data, which can be obtained with help of visualization.
 \
 Questions that i would like to answer through analysis of this data:
-- At what companies do developers get paid the most?
+- Does people age affect their likeliness of using AI?
+- Does people who use AI earning more?
 - How much does remote working matter to employees?
 - How does coding experience affect the level of pay?
-- What's the most popular method of learning to code?
+- What are the most popular technologies used in Poland?
 - Are you more likely to get a job as a developer if you have a master's degree?
 
 Because of where I live, it will be extremely interesting to analyze only my region and the possibility to compare it with the rest of the world. This would help to draw conclusions about actual situation at the local job market and position it situation among the rest.
 
 ## Structure
 Data is placed in two files in csv format. 
-- First contains information about questions itself, like: question name, content, is it forced to answer, type.
-- Second contains information about user answers. Each row corrensponds to single person given answers and each column corrensponds to answer to specific questions. In this data there is most of possible types of values stored in columns, like: categorical, numeric, categorical list, intervals.
+- Schema contains information about questions itself, like: question name, content, is it forced to answer, type.
+- Public contains information about user answers. Each row corrensponds to single person given answers and each column corrensponds to answer to specific questions. In this data there is most of possible types of values stored in columns, like: categorical, numeric, categorical list, intervals.
 
 # Data cleaning
 
 ## Drop unnecessary columns
 - Q120 - empty question in schema filled with one unique value without nulls, possibly consent to processing data.
 - SurveyLength, SurveyEase question about the respondent's feelings after completing the survey may be omitted.
-- SOAI long strings containing user opinions about AI, great for NLP, not exactly for this project.
+- SOAI long strings containing user opinions about AI, great for NLP, not particularly for this project.
 - YearsCodePro - a lot of nulls to handle, very similar to previous YearsCode. The only difference is this question doesn't include coding years during education.
 ## Remove duplicate and Incomplete Cases
 - Removing rows where more than 60% of columns are null.
 - There isn't any duplicates.
 ## Threat null values
-- Rows where most of the values are nulls, are removed.
 - For now: nulls in columns containing text data, are replaced by 'NA' which means Not available/Not answered.
 - YearsCode - removed rows with nulls.
 ## Handle data types
-- YearsCode - categorized
+- YearsCode - categorized from integer values
 ## Remove nonsense Answers and Unreadable data
-- CodingActivities was checked because of possibility of taking user inputs, but their answers aren't mentioned in data
-- LearnCode the same as above
+- Most of questions that allows user input doesn't contain this information in data. Only SOAI column contains user inputs.
 - LearnCodeOnline - column contains one extra value which is not mentioned in possible answers of pdf version of survey: "Formal documentation provided by the owner of the tech". Additionally nonsense answer which is "Click to write Choice 20". Like above user inputs are trimmed.
-- LearnCodeCoursesCert as above, user inputs trimmed
-- CompTotal - the question is answered by the user, leading to unrealistic answers, rows with CompTotal above $1 million are removed to get rid of outliers and reduce the influence of high earners on further analysis.
+- CompTotal - the question is answered by the user through input, leading to unrealistic answers. Rows with CompTotal above $1 million are removed to get rid of outliers and reduce the influence of high earners on further analysis.
 
 ## Remove outliers
 
@@ -127,7 +125,3 @@ Industry - categorical ✅ checked <br>
 SurveyLength ✅ removed <br>
 SurveyEase ✅ removed <br>
 ConvertedCompYearly - numeric ❌ <br>
-
-
-# Conclusions
-- User inputs in most questions were trimmed by Stack overflow
