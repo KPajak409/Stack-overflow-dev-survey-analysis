@@ -1,0 +1,3095 @@
+{
+  "compatibilityLevel": 1567,
+  "model": {
+    "annotations": [
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"Measure Table\",\"survey_results_schema\",\"pandas_processed\",\"power_query_processed\",\"employment_salary\"]"
+      },
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "1"
+      },
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.126.1261.0 (24.02)"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"DevMode\"]"
+      }
+    ],
+    "culture": "en-US",
+    "cultures": [
+      {
+        "name": "en-US",
+        "linguisticMetadata": {
+          "content": {
+            "DynamicImprovement": "HighConfidence",
+            "Language": "en-US",
+            "Version": "1.0.0"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "pl-PL",
+    "tables": [
+      {
+        "name": "DateTableTemplate_bf015954-52f1-47b3-9924-e75ce572f574",
+        "annotations": [
+          {
+            "name": "__PBI_TemplateDateTable",
+            "value": "true"
+          },
+          {
+            "name": "DefaultItem",
+            "value": "DateHierarchy"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "PaddedDateTableDates",
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isHidden": true,
+            "isNameInferred": true,
+            "lineageTag": "e2ee283a-58ab-488a-b9bf-8d2b502e638a",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Year"
+              }
+            ],
+            "dataCategory": "Years",
+            "dataType": "int64",
+            "expression": "YEAR([Date])",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "fa90ab63-e4a4-484a-ba11-fb69c2045cb5",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "MonthNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "MonthNumber"
+              }
+            ],
+            "dataCategory": "MonthOfYear",
+            "dataType": "int64",
+            "expression": "MONTH([Date])",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "c143a874-3948-47aa-8e47-ef2ce879b6b7",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Month"
+              }
+            ],
+            "dataCategory": "Months",
+            "dataType": "string",
+            "expression": "FORMAT([Date], \"MMMM\")",
+            "isHidden": true,
+            "lineageTag": "606b385f-2e30-44e9-8df3-1988bf7d4b81",
+            "sortByColumn": "MonthNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "QuarterNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "QuarterNumber"
+              }
+            ],
+            "dataCategory": "QuarterOfYear",
+            "dataType": "int64",
+            "expression": "INT(([MonthNo] + 2) / 3)",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "531e41eb-b7fa-4012-bbb5-0efcf920d6fc",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Quarter"
+              }
+            ],
+            "dataCategory": "Quarters",
+            "dataType": "string",
+            "expression": "\"Qtr \" & [QuarterNo]",
+            "isHidden": true,
+            "lineageTag": "a2d6ab84-0b95-4b3c-adea-d43eb96f2e03",
+            "sortByColumn": "QuarterNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Day",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Day"
+              }
+            ],
+            "dataCategory": "DayOfMonth",
+            "dataType": "int64",
+            "expression": "DAY([Date])",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "bcb5a046-c2dc-43d0-89aa-61d3f7ea6e2f",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Date Hierarchy",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "DateHierarchy"
+              }
+            ],
+            "levels": [
+              {
+                "name": "Year",
+                "column": "Year",
+                "lineageTag": "e7615a47-4951-4c89-ae4d-b74c0f62aea5",
+                "ordinal": 0
+              },
+              {
+                "name": "Quarter",
+                "column": "Quarter",
+                "lineageTag": "d1d61487-c1e3-4c85-bfcb-7025a996dbe9",
+                "ordinal": 1
+              },
+              {
+                "name": "Month",
+                "column": "Month",
+                "lineageTag": "1754a7b3-b23d-420f-bcd0-74384cb025a3",
+                "ordinal": 2
+              },
+              {
+                "name": "Day",
+                "column": "Day",
+                "lineageTag": "a3b1ed0a-9999-488e-9415-864b24af13bd",
+                "ordinal": 3
+              }
+            ],
+            "lineageTag": "27cc4cf6-e871-4112-bfe4-1f95ad3a765a"
+          }
+        ],
+        "isHidden": true,
+        "isPrivate": true,
+        "lineageTag": "cefe6f87-a2c4-4476-a9d0-b8a52026735e",
+        "partitions": [
+          {
+            "name": "DateTableTemplate_bf015954-52f1-47b3-9924-e75ce572f574",
+            "mode": "import",
+            "source": {
+              "expression": "Calendar(Date(2015,1,1), Date(2015,1,1))",
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Measure Table",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          }
+        ],
+        "lineageTag": "6428ca73-644c-4881-a509-9de3b5a49c58",
+        "measures": [
+          {
+            "name": "CountryCard",
+            "expression": [
+              "",
+              "SELECTEDVALUE(employment_salary[country],\"Total\")"
+            ],
+            "lineageTag": "eaca987e-932d-41ea-b157-dd32fd7e0d2d"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Measure Table",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"i44FAA==\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"Column1\", type text}}),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Changed Type\",{\"Column1\"})",
+                "in",
+                "    #\"Removed Columns\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "survey_results_schema",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "qid",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "c0534c99-7195-47cf-b32a-c1696f71de06",
+            "sourceColumn": "qid",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "qname",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "e8897979-77f6-420c-945e-dd751c71ed7f",
+            "sourceColumn": "qname",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "question",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ba6cfa50-9b1f-4067-9e8b-12c1b3522324",
+            "sourceColumn": "question",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "force_resp",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ab7f843a-40e2-4a82-b7d3-58c31f07aede",
+            "sourceColumn": "force_resp",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "type",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "6a281079-d26d-4771-b2c9-6a34f9314364",
+            "sourceColumn": "type",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "selector",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "fdf2ebbb-4884-4f9c-a811-937cfe318952",
+            "sourceColumn": "selector",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "db86982c-1f0d-4566-9379-90cd9b38ca23",
+        "partitions": [
+          {
+            "name": "survey_results_schema",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"D:\\Projects\\Stack-overflow-dev-survey-analysis\\data\\survey_results_schema.csv\"),[Delimiter=\",\", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"Column1\", type text}, {\"Column2\", type text}, {\"Column3\", type text}, {\"Column4\", type text}, {\"Column5\", type text}, {\"Column6\", type text}}),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"Changed Type\", [PromoteAllScalars=true]),",
+                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"qid\", type text}, {\"qname\", type text}, {\"question\", type text}, {\"force_resp\", type text}, {\"type\", type text}, {\"selector\", type text}})",
+                "in",
+                "    #\"Changed Type1\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "pandas_processed",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          }
+        ],
+        "columns": [
+          {
+            "name": "ResponseId",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "c4cada29-1322-454d-966d-687fdc378e4b",
+            "sourceColumn": "ResponseId",
+            "summarizeBy": "count"
+          },
+          {
+            "name": "MainBranch",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "44a57952-8535-44b6-bae2-f09daa03566f",
+            "sourceColumn": "MainBranch",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Age",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "2aaa4cae-ff63-494c-9c7e-352329a9d451",
+            "sourceColumn": "Age",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Employment",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "d152cc02-1828-4c98-b687-b18d610f11dc",
+            "sourceColumn": "Employment",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RemoteWork",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ec1d9238-4648-411a-b243-54096ebed9a7",
+            "sourceColumn": "RemoteWork",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CodingActivities",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a8fb213c-457d-48d6-a44b-791ee6e8008b",
+            "sourceColumn": "CodingActivities",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "EdLevel",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ec338ff7-bab0-4741-99c6-d7f0eb66d083",
+            "sourceColumn": "EdLevel",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LearnCode",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "cac94be8-51e1-4ff0-9639-b54b602e77fb",
+            "sourceColumn": "LearnCode",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LearnCodeOnline",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ba1dfb28-8827-4694-855d-15190f32a6ee",
+            "sourceColumn": "LearnCodeOnline",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LearnCodeCoursesCert",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "4201424a-8215-4fb3-9fee-7d49ec364a0f",
+            "sourceColumn": "LearnCodeCoursesCert",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "YearsCode",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a35bd4b2-b4f4-4cc2-b38b-71335c8571a9",
+            "sourceColumn": "YearsCode",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DevType",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a2b16ca8-0579-46a4-af85-1e5e88904ac3",
+            "sourceColumn": "DevType",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OrgSize",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "bc1c420c-0ead-48dc-b40d-fc8b93ab6406",
+            "sourceColumn": "OrgSize",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PurchaseInfluence",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "b2a92b6b-f6dd-4bad-afb1-abe467c36a73",
+            "sourceColumn": "PurchaseInfluence",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "TechList",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1694491a-633e-4ca3-868a-5cb4ee244e8c",
+            "sourceColumn": "TechList",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "BuyNewTool",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "c0e081b3-5517-4b49-b733-44144c9d3c7e",
+            "sourceColumn": "BuyNewTool",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Country",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "bbd7278a-37ab-492c-8c24-8fb715738900",
+            "sourceColumn": "Country",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Currency",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "343b0dc2-52fa-4551-a037-f967671314dd",
+            "sourceColumn": "Currency",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CompTotal",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "dabc1faa-de59-4c79-ac23-36371ed54121",
+            "sourceColumn": "CompTotal",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LanguageHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "c7847d43-52ee-4fae-abf1-b3db758fa361",
+            "sourceColumn": "LanguageHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LanguageWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "30cc6770-7af2-4e67-945e-1464aa570d24",
+            "sourceColumn": "LanguageWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DatabaseHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "6438871b-7e9b-432b-b380-4e192f2e83f8",
+            "sourceColumn": "DatabaseHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DatabaseWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "b9b351e0-2f71-4dbd-83ce-d7fb2be6806d",
+            "sourceColumn": "DatabaseWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PlatformHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "c1d287d9-16eb-4de2-a4e6-7c24b9041e26",
+            "sourceColumn": "PlatformHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PlatformWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "48c016f0-75cd-408c-8537-89c395d19802",
+            "sourceColumn": "PlatformWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "WebframeHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1196c070-7acf-4324-8507-bd1578db8f0d",
+            "sourceColumn": "WebframeHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "WebframeWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "800d3169-dccc-4bb6-9482-7fc3123d1b5d",
+            "sourceColumn": "WebframeWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MiscTechHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "bba17224-d6fd-41b4-892a-cf0a69805c15",
+            "sourceColumn": "MiscTechHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MiscTechWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "54dc334a-14e6-4c40-bed9-c5292b227b61",
+            "sourceColumn": "MiscTechWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ToolsTechHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ce9881bc-0080-440d-9a17-d50ec8a7d49c",
+            "sourceColumn": "ToolsTechHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ToolsTechWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "6f1f9a13-37b9-4378-8de1-e9acecedcc41",
+            "sourceColumn": "ToolsTechWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "NEWCollabToolsHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "0771349a-dafa-4dbe-8e56-5fcbc0142948",
+            "sourceColumn": "NEWCollabToolsHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "NEWCollabToolsWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "58798d67-4a46-4a24-bf9c-4bbc90b07177",
+            "sourceColumn": "NEWCollabToolsWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OpSysPersonal use",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "c5f2baf7-85a2-4682-b015-7c282400cfce",
+            "sourceColumn": "OpSysPersonal use",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OpSysProfessional use",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "30f50f71-643e-48ec-a47a-fa83410ec3a6",
+            "sourceColumn": "OpSysProfessional use",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OfficeStackAsyncHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a4fddcd6-6811-4f0a-a59c-7febac5e0408",
+            "sourceColumn": "OfficeStackAsyncHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OfficeStackAsyncWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "6c455df4-6e07-4025-8722-137a3bf0c487",
+            "sourceColumn": "OfficeStackAsyncWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OfficeStackSyncHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "88010f64-bd10-4c44-a90d-ace0c2e5bc65",
+            "sourceColumn": "OfficeStackSyncHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OfficeStackSyncWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "0a6da4b7-6aa3-496a-a7a5-54020ebf2f40",
+            "sourceColumn": "OfficeStackSyncWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AISearchHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "7f7898ab-4838-46fa-b55e-9d5796650879",
+            "sourceColumn": "AISearchHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AISearchWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "cb048050-70d2-43ea-92ea-4e19ff4d3db1",
+            "sourceColumn": "AISearchWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AIDevHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "823faec2-69f8-4fb5-9cae-bfe77c088ab4",
+            "sourceColumn": "AIDevHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AIDevWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "d47ab974-8b2a-4281-af09-34cd7c7b11bf",
+            "sourceColumn": "AIDevWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "NEWSOSites",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "9a30efed-6853-47c7-a81a-a05257a6f1bd",
+            "sourceColumn": "NEWSOSites",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SOVisitFreq",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1c6cf83b-510b-406b-ae2c-3bc7ea32dd92",
+            "sourceColumn": "SOVisitFreq",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SOAccount",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "91b6524b-4249-4859-9749-c361d39742c2",
+            "sourceColumn": "SOAccount",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SOPartFreq",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "77acd4bd-5821-4495-8095-bbaaee183488",
+            "sourceColumn": "SOPartFreq",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SOComm",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a8a72c4d-807c-431e-9f90-09bd3e3d8af2",
+            "sourceColumn": "SOComm",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AISelect",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "111ed804-b4df-40f2-80a6-16743ceec672",
+            "sourceColumn": "AISelect",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AISent",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "529b7d14-5fc5-448d-bd42-5b3875f61a23",
+            "sourceColumn": "AISent",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AIAcc",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "45e06d2c-990a-44da-9879-a79f6e5651a7",
+            "sourceColumn": "AIAcc",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AIBen",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "27b4da7d-0242-4889-9153-bd4b1f1fe6ce",
+            "sourceColumn": "AIBen",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AIToolInterested in Using",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "bd7f0136-dfd9-418a-b963-a2400a3fca0e",
+            "sourceColumn": "AIToolInterested in Using",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AIToolCurrently Using",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "f5ee17c3-3a94-43a6-a4b5-91615efd05fe",
+            "sourceColumn": "AIToolCurrently Using",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AIToolNot interested in Using",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "47e5aa02-40b6-4eb7-9d3d-95e4971350fc",
+            "sourceColumn": "AIToolNot interested in Using",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AINextVery different",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "7316ba1d-ef53-452e-899f-2448bd064b7d",
+            "sourceColumn": "AINextVery different",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AINextNeither different nor similar",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "3f624c0d-b756-42ee-8be0-221d5814343c",
+            "sourceColumn": "AINextNeither different nor similar",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AINextSomewhat similar",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "4deb5929-c48b-47e9-865a-d8fbe61a2582",
+            "sourceColumn": "AINextSomewhat similar",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AINextVery similar",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "d9778ec6-dd0a-41de-96a5-e74dfd4b92fd",
+            "sourceColumn": "AINextVery similar",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AINextSomewhat different",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "86aff4ae-f6c2-4dc8-a089-27f15c4b71ef",
+            "sourceColumn": "AINextSomewhat different",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "TBranch",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "d7a45807-0eff-4e9a-8e3e-11649713c5ea",
+            "sourceColumn": "TBranch",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ICorPM",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "5a04c075-08f3-4590-baa3-76118b14bafc",
+            "sourceColumn": "ICorPM",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "WorkExp",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "506195da-e9c0-4e05-afda-817a0dea9693",
+            "sourceColumn": "WorkExp",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Knowledge_1",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a9330128-0149-413d-8679-045adc98cadf",
+            "sourceColumn": "Knowledge_1",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Knowledge_2",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "8bbe7c29-38c7-4292-a7b4-a1c20f63abef",
+            "sourceColumn": "Knowledge_2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Knowledge_3",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "845812ea-87b0-4984-aff5-c6ed6383c515",
+            "sourceColumn": "Knowledge_3",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Knowledge_4",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "16df3ac2-afea-4184-9e4b-51b6a5333b16",
+            "sourceColumn": "Knowledge_4",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Knowledge_5",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "5db8a260-2020-480b-ab10-819f222d2af4",
+            "sourceColumn": "Knowledge_5",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Knowledge_6",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1e4acb5b-5120-4617-89af-702ece632843",
+            "sourceColumn": "Knowledge_6",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Knowledge_7",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "59f804fb-d3ff-4cf3-a204-31dae0134f6a",
+            "sourceColumn": "Knowledge_7",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Knowledge_8",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "2052baed-2611-4665-83f8-c9192ece5468",
+            "sourceColumn": "Knowledge_8",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Frequency_1",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1574b642-212e-43c7-b2d1-2d061e31152b",
+            "sourceColumn": "Frequency_1",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Frequency_2",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a87c92c0-e3df-4bdc-a96d-6ed8bcf07f51",
+            "sourceColumn": "Frequency_2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Frequency_3",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "970b8a5a-8740-46f1-bf40-21d04339f9bf",
+            "sourceColumn": "Frequency_3",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "TimeSearching",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "9e9ffe6a-cb84-4a2c-aa5e-6ee702343d28",
+            "sourceColumn": "TimeSearching",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "TimeAnswering",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1c27413a-73cd-44e9-a9a0-ee5735683559",
+            "sourceColumn": "TimeAnswering",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ProfessionalTech",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "46b55b85-5653-4e79-901c-ef69faabf844",
+            "sourceColumn": "ProfessionalTech",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Industry",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "e1793fdd-39e6-4210-8a26-f95aaa97168f",
+            "sourceColumn": "Industry",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ConvertedCompYearly",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "73881e7c-e5de-4568-8328-176afa73b33a",
+            "sourceColumn": "ConvertedCompYearly",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "d83b2573-8e56-47bd-b931-45d449cfa7b3",
+        "partitions": [
+          {
+            "name": "pandas_processed",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"D:\\Projects\\Stack-overflow-dev-survey-analysis\\data\\pandas_processed.csv\"),[Delimiter=\",\", Columns=79, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"ResponseId\", Int64.Type}, {\"MainBranch\", type text}, {\"Age\", type text}, {\"Employment\", type text}, {\"RemoteWork\", type text}, {\"CodingActivities\", type text}, {\"EdLevel\", type text}, {\"LearnCode\", type text}, {\"LearnCodeOnline\", type text}, {\"LearnCodeCoursesCert\", type text}, {\"YearsCode\", type text}, {\"DevType\", type text}, {\"OrgSize\", type text}, {\"PurchaseInfluence\", type text}, {\"TechList\", type text}, {\"BuyNewTool\", type text}, {\"Country\", type text}, {\"Currency\", type text}, {\"CompTotal\", type text}, {\"LanguageHaveWorkedWith\", type text}, {\"LanguageWantToWorkWith\", type text}, {\"DatabaseHaveWorkedWith\", type text}, {\"DatabaseWantToWorkWith\", type text}, {\"PlatformHaveWorkedWith\", type text}, {\"PlatformWantToWorkWith\", type text}, {\"WebframeHaveWorkedWith\", type text}, {\"WebframeWantToWorkWith\", type text}, {\"MiscTechHaveWorkedWith\", type text}, {\"MiscTechWantToWorkWith\", type text}, {\"ToolsTechHaveWorkedWith\", type text}, {\"ToolsTechWantToWorkWith\", type text}, {\"NEWCollabToolsHaveWorkedWith\", type text}, {\"NEWCollabToolsWantToWorkWith\", type text}, {\"OpSysPersonal use\", type text}, {\"OpSysProfessional use\", type text}, {\"OfficeStackAsyncHaveWorkedWith\", type text}, {\"OfficeStackAsyncWantToWorkWith\", type text}, {\"OfficeStackSyncHaveWorkedWith\", type text}, {\"OfficeStackSyncWantToWorkWith\", type text}, {\"AISearchHaveWorkedWith\", type text}, {\"AISearchWantToWorkWith\", type text}, {\"AIDevHaveWorkedWith\", type text}, {\"AIDevWantToWorkWith\", type text}, {\"NEWSOSites\", type text}, {\"SOVisitFreq\", type text}, {\"SOAccount\", type text}, {\"SOPartFreq\", type text}, {\"SOComm\", type text}, {\"AISelect\", type text}, {\"AISent\", type text}, {\"AIAcc\", type text}, {\"AIBen\", type text}, {\"AIToolInterested in Using\", type text}, {\"AIToolCurrently Using\", type text}, {\"AIToolNot interested in Using\", type text}, {\"AINextVery different\", type text}, {\"AINextNeither different nor similar\", type text}, {\"AINextSomewhat similar\", type text}, {\"AINextVery similar\", type text}, {\"AINextSomewhat different\", type text}, {\"TBranch\", type text}, {\"ICorPM\", type text}, {\"WorkExp\", type text}, {\"Knowledge_1\", type text}, {\"Knowledge_2\", type text}, {\"Knowledge_3\", type text}, {\"Knowledge_4\", type text}, {\"Knowledge_5\", type text}, {\"Knowledge_6\", type text}, {\"Knowledge_7\", type text}, {\"Knowledge_8\", type text}, {\"Frequency_1\", type text}, {\"Frequency_2\", type text}, {\"Frequency_3\", type text}, {\"TimeSearching\", type text}, {\"TimeAnswering\", type text}, {\"ProfessionalTech\", type text}, {\"Industry\", type text}, {\"ConvertedCompYearly\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "power_query_processed",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          }
+        ],
+        "columns": [
+          {
+            "name": "ResponseId",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "d8eac524-7b32-4f84-8498-81a7f71ed2ea",
+            "sourceColumn": "ResponseId",
+            "summarizeBy": "count"
+          },
+          {
+            "name": "MainBranch",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "19f91eb8-9843-4107-9db8-820194702d4e",
+            "sourceColumn": "MainBranch",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Age",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "0f3c3f0e-ad51-42b5-a099-5b14333361f4",
+            "sourceColumn": "Age",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Employment",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "0c6da95b-ec42-420a-9145-65051d1d7c88",
+            "sourceColumn": "Employment",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RemoteWork",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "9ef68ecc-6420-486b-a78e-7f77967deafc",
+            "sourceColumn": "RemoteWork",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CodingActivities",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "80c8ebc3-88af-4717-baeb-2fc677dcae83",
+            "sourceColumn": "CodingActivities",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "EdLevel",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "d5003e2d-8175-4d64-878d-24c641d7990c",
+            "sourceColumn": "EdLevel",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LearnCode",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "d650e198-0a75-449c-b2aa-cc0f5b8e14f0",
+            "sourceColumn": "LearnCode",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LearnCodeOnline",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "961d686e-6c9c-4569-9901-c6db6ba4d85c",
+            "sourceColumn": "LearnCodeOnline",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LearnCodeCoursesCert",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "61afff87-93c5-48d7-a367-fe30e00ce1f3",
+            "sourceColumn": "LearnCodeCoursesCert",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "YearsCode",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "de308e1c-8b12-4544-b146-993e1ac01fae",
+            "sourceColumn": "YearsCode",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DevType",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "3d2220d8-da9b-4102-a3f8-a121259082c2",
+            "sourceColumn": "DevType",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OrgSize",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "94ba8170-27d5-4564-88ce-e5574cd04610",
+            "sourceColumn": "OrgSize",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PurchaseInfluence",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "73445a21-784b-4f11-b517-df8499a4f252",
+            "sourceColumn": "PurchaseInfluence",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "TechList",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "2b35293b-94e7-4de5-a619-b62ccd8e4cca",
+            "sourceColumn": "TechList",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "BuyNewTool",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "3c5ad4de-7eaf-425c-94bf-c71f800396dc",
+            "sourceColumn": "BuyNewTool",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Country",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "45422615-d197-4cc9-a81c-da9f465b1b9c",
+            "sourceColumn": "Country",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Currency",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "3dbd8cc3-5ef3-459c-9294-295cef4eb22d",
+            "sourceColumn": "Currency",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CompTotal",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "4b142488-afa1-413e-a294-ec648acc200e",
+            "sourceColumn": "CompTotal",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "LanguageHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ed3791a1-c228-40b4-8151-df6e90b54269",
+            "sourceColumn": "LanguageHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LanguageWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "3ca20787-128b-4989-96c5-fcefb636e31a",
+            "sourceColumn": "LanguageWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DatabaseHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "2187c9c1-0fd5-4da3-96ac-395716725afb",
+            "sourceColumn": "DatabaseHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DatabaseWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "75261dea-282a-4f3c-97f9-7d8368ca5768",
+            "sourceColumn": "DatabaseWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PlatformHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "aa0004ec-b33e-4b10-94fa-45729421838f",
+            "sourceColumn": "PlatformHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PlatformWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "8303cd6a-c5af-4e06-ab06-7329119f6acc",
+            "sourceColumn": "PlatformWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "WebframeHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "344194ee-b584-43ba-b093-80efcb6df815",
+            "sourceColumn": "WebframeHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "WebframeWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "16e03ca9-754a-41ba-aa93-822e6c9d4e95",
+            "sourceColumn": "WebframeWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MiscTechHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "43db67e8-e153-4515-95b6-9b67e2001bf1",
+            "sourceColumn": "MiscTechHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MiscTechWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "9c36e247-305f-4758-bde6-14e077f31cd6",
+            "sourceColumn": "MiscTechWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ToolsTechHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "fba8ed78-4429-4ef1-ae52-83a2444fe51e",
+            "sourceColumn": "ToolsTechHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ToolsTechWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "55ef285d-e3ae-48cf-b094-7218275bd788",
+            "sourceColumn": "ToolsTechWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "NEWCollabToolsHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a6c0eb24-3ab2-4f6b-830d-47f5259215c4",
+            "sourceColumn": "NEWCollabToolsHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "NEWCollabToolsWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "27fa6ee2-85b1-4d0a-95eb-acc17832342f",
+            "sourceColumn": "NEWCollabToolsWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OpSysPersonal use",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "f6ecdffe-90ae-4527-96e0-28285d216cec",
+            "sourceColumn": "OpSysPersonal use",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OpSysProfessional use",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "61342cb1-8eb0-4e96-bd5c-8392221b6338",
+            "sourceColumn": "OpSysProfessional use",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OfficeStackAsyncHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "804236d3-6296-4b2e-9c63-6d01e5967196",
+            "sourceColumn": "OfficeStackAsyncHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OfficeStackAsyncWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "5d1741a8-edee-4e7b-9d1c-601d7519f8e1",
+            "sourceColumn": "OfficeStackAsyncWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OfficeStackSyncHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "60097d6c-ca3e-4f66-a1b5-7aeb21840551",
+            "sourceColumn": "OfficeStackSyncHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OfficeStackSyncWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ef1d2c1a-3a45-48f3-a473-f5123194a8b7",
+            "sourceColumn": "OfficeStackSyncWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AISearchHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "4595b6ef-31f2-42d8-8dec-a6adf5697ffc",
+            "sourceColumn": "AISearchHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AISearchWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "86062c0a-8898-4f36-9806-ba4d7ffe6df6",
+            "sourceColumn": "AISearchWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AIDevHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "7cff7d95-9a77-41f9-9e5b-81deca4279e1",
+            "sourceColumn": "AIDevHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AIDevWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "fd4d4d80-87a8-4f26-b52c-8ab75fc14872",
+            "sourceColumn": "AIDevWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "NEWSOSites",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "616e5ce4-76b0-4eb4-b040-6820f6158dd7",
+            "sourceColumn": "NEWSOSites",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SOVisitFreq",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "c2e5f1bb-62c7-4b75-a385-a65a755ed9bd",
+            "sourceColumn": "SOVisitFreq",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SOAccount",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "8f81d26b-e6b9-4f49-bbd8-bcbe51193eaf",
+            "sourceColumn": "SOAccount",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SOPartFreq",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "5d7da6c7-19a0-4eaf-ab06-96fe5db4efce",
+            "sourceColumn": "SOPartFreq",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SOComm",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "449b1d85-3a2e-4fdb-99e4-39242abb66a2",
+            "sourceColumn": "SOComm",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AISelect",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "f0a2a278-1a59-4c55-8c40-67c04c8e0598",
+            "sourceColumn": "AISelect",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AISent",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "8304aff3-1831-41d1-8cd7-bf9932555d2f",
+            "sourceColumn": "AISent",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AIAcc",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "43c724e8-9c07-4c58-8d45-404774bc0e56",
+            "sourceColumn": "AIAcc",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AIBen",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1e1daf14-ea12-408b-a615-5b2a482cc969",
+            "sourceColumn": "AIBen",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AIToolInterested in Using",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "448d11f3-9639-475e-8705-726fac2afd3f",
+            "sourceColumn": "AIToolInterested in Using",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AIToolCurrently Using",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ce065af7-e0b1-4398-943a-c228790e087a",
+            "sourceColumn": "AIToolCurrently Using",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AIToolNot interested in Using",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "b72b07b0-9c2a-43bf-aecd-d34b6da2e224",
+            "sourceColumn": "AIToolNot interested in Using",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AINextVery different",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "daa18606-2039-4dbf-b757-9cdee6e4d0e2",
+            "sourceColumn": "AINextVery different",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AINextNeither different nor similar",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "75bcf39c-19e2-408c-8c77-ccd9c9cb282b",
+            "sourceColumn": "AINextNeither different nor similar",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AINextSomewhat similar",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "8dab57d5-c20d-4317-a181-4a93d5b2af66",
+            "sourceColumn": "AINextSomewhat similar",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AINextVery similar",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "5cea6bd7-3be1-4665-97af-2d3e6e264ee8",
+            "sourceColumn": "AINextVery similar",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AINextSomewhat different",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "766a35d0-7bfa-4dc6-8b0f-3c7ad1683953",
+            "sourceColumn": "AINextSomewhat different",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "TBranch",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "de4880f3-8f09-4072-93a1-f8a2a44806d2",
+            "sourceColumn": "TBranch",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ICorPM",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "e424963e-dcdc-4cdb-ab0e-45a57bbc884c",
+            "sourceColumn": "ICorPM",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "WorkExp",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "000ca8a2-defd-41fe-95b5-4dbf392de68c",
+            "sourceColumn": "WorkExp",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Knowledge_1",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "f9fc3ff7-7383-4b28-bb11-9d6d336fe4cc",
+            "sourceColumn": "Knowledge_1",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Knowledge_2",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "291b8f38-7133-4f25-8cbd-de0117c961d0",
+            "sourceColumn": "Knowledge_2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Knowledge_3",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "6bc985d5-8909-4818-bd24-7329b59c1905",
+            "sourceColumn": "Knowledge_3",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Knowledge_4",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1fb5d6fd-3c35-4148-94bb-853d88a95aa8",
+            "sourceColumn": "Knowledge_4",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Knowledge_5",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "60ab8ce2-120b-47b6-bdc4-3c7b82c67550",
+            "sourceColumn": "Knowledge_5",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Knowledge_6",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "824bbb1b-fb2e-4bb4-8d04-8aa6066e2d63",
+            "sourceColumn": "Knowledge_6",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Knowledge_7",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "227ed7f4-9d01-4305-898c-a3f44a66d3b5",
+            "sourceColumn": "Knowledge_7",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Knowledge_8",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "cf10dedb-e46f-4357-b992-abab0e9fd9b8",
+            "sourceColumn": "Knowledge_8",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Frequency_1",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "13633da4-c8ca-4df2-83be-894e2dfc79c1",
+            "sourceColumn": "Frequency_1",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Frequency_2",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "dea6b6e0-de9a-467e-9d3c-9d567da4a4dd",
+            "sourceColumn": "Frequency_2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Frequency_3",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "b12f9af1-2c64-4446-b53c-9d8682b1081c",
+            "sourceColumn": "Frequency_3",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "TimeSearching",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ec6dbb1d-d26e-4530-9479-a79b2712a4ec",
+            "sourceColumn": "TimeSearching",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "TimeAnswering",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "881edf4c-1fca-4d61-b431-74c3b4c9c58a",
+            "sourceColumn": "TimeAnswering",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ProfessionalTech",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "973cc8e5-5b2d-475a-a862-bb23516155a3",
+            "sourceColumn": "ProfessionalTech",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Industry",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "357c27b5-9504-461b-8754-098f739d822f",
+            "sourceColumn": "Industry",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ConvertedCompYearly",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "547ebdb4-7b79-4405-aae6-db36c374ee2d",
+            "sourceColumn": "ConvertedCompYearly",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "e1663095-646f-4594-afd0-f6f2c1168956",
+        "partitions": [
+          {
+            "name": "power_query_processed",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"D:\\Projects\\Stack-overflow-dev-survey-analysis\\data\\pandas_processed.csv\"),[Delimiter=\",\", Columns=79, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"ResponseId\", Int64.Type}, {\"MainBranch\", type text}, {\"Age\", type text}, {\"Employment\", type text}, {\"RemoteWork\", type text}, {\"CodingActivities\", type text}, {\"EdLevel\", type text}, {\"LearnCode\", type text}, {\"LearnCodeOnline\", type text}, {\"LearnCodeCoursesCert\", type text}, {\"YearsCode\", type text}, {\"DevType\", type text}, {\"OrgSize\", type text}, {\"PurchaseInfluence\", type text}, {\"TechList\", type text}, {\"BuyNewTool\", type text}, {\"Country\", type text}, {\"Currency\", type text}, {\"CompTotal\", type text}, {\"LanguageHaveWorkedWith\", type text}, {\"LanguageWantToWorkWith\", type text}, {\"DatabaseHaveWorkedWith\", type text}, {\"DatabaseWantToWorkWith\", type text}, {\"PlatformHaveWorkedWith\", type text}, {\"PlatformWantToWorkWith\", type text}, {\"WebframeHaveWorkedWith\", type text}, {\"WebframeWantToWorkWith\", type text}, {\"MiscTechHaveWorkedWith\", type text}, {\"MiscTechWantToWorkWith\", type text}, {\"ToolsTechHaveWorkedWith\", type text}, {\"ToolsTechWantToWorkWith\", type text}, {\"NEWCollabToolsHaveWorkedWith\", type text}, {\"NEWCollabToolsWantToWorkWith\", type text}, {\"OpSysPersonal use\", type text}, {\"OpSysProfessional use\", type text}, {\"OfficeStackAsyncHaveWorkedWith\", type text}, {\"OfficeStackAsyncWantToWorkWith\", type text}, {\"OfficeStackSyncHaveWorkedWith\", type text}, {\"OfficeStackSyncWantToWorkWith\", type text}, {\"AISearchHaveWorkedWith\", type text}, {\"AISearchWantToWorkWith\", type text}, {\"AIDevHaveWorkedWith\", type text}, {\"AIDevWantToWorkWith\", type text}, {\"NEWSOSites\", type text}, {\"SOVisitFreq\", type text}, {\"SOAccount\", type text}, {\"SOPartFreq\", type text}, {\"SOComm\", type text}, {\"AISelect\", type text}, {\"AISent\", type text}, {\"AIAcc\", type text}, {\"AIBen\", type text}, {\"AIToolInterested in Using\", type text}, {\"AIToolCurrently Using\", type text}, {\"AIToolNot interested in Using\", type text}, {\"AINextVery different\", type text}, {\"AINextNeither different nor similar\", type text}, {\"AINextSomewhat similar\", type text}, {\"AINextVery similar\", type text}, {\"AINextSomewhat different\", type text}, {\"TBranch\", type text}, {\"ICorPM\", type text}, {\"WorkExp\", type text}, {\"Knowledge_1\", type text}, {\"Knowledge_2\", type text}, {\"Knowledge_3\", type text}, {\"Knowledge_4\", type text}, {\"Knowledge_5\", type text}, {\"Knowledge_6\", type text}, {\"Knowledge_7\", type text}, {\"Knowledge_8\", type text}, {\"Frequency_1\", type text}, {\"Frequency_2\", type text}, {\"Frequency_3\", type text}, {\"TimeSearching\", type text}, {\"TimeAnswering\", type text}, {\"ProfessionalTech\", type text}, {\"Industry\", type text}, {\"ConvertedCompYearly\", type text}}),",
+                "    #\"Age replace years\" = Table.ReplaceValue(#\"Changed Type\",\"years old\",\"\",Replacer.ReplaceText,{\"Age\"}),",
+                "    #\"Age replace years 2\" = Table.ReplaceValue(#\"Age replace years\",\"years\",\"\",Replacer.ReplaceText,{\"Age\"}),",
+                "    #\"OrgSize employees replace\" = Table.ReplaceValue(#\"Age replace years 2\",\"employees\",\"\",Replacer.ReplaceText,{\"OrgSize\"}),",
+                "    #\"CompTotal remove .0\" = Table.ReplaceValue(#\"OrgSize employees replace\",\".0\",\"\",Replacer.ReplaceText,{\"CompTotal\"}),",
+                "    #\"CompTotal to decimal\" = Table.TransformColumnTypes(#\"CompTotal remove .0\",{{\"CompTotal\", type number}}),",
+                "    #\"ConvertedComp remove .0\" = Table.ReplaceValue(#\"CompTotal to decimal\",\".0\",\"\",Replacer.ReplaceText,{\"ConvertedCompYearly\"}),",
+                "    #\"ConvertedComp to decimal\" = Table.TransformColumnTypes(#\"ConvertedComp remove .0\",{{\"ConvertedCompYearly\", type number}})",
+                "in",
+                "    #\"ConvertedComp to decimal\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "employment_salary",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          }
+        ],
+        "columns": [
+          {
+            "name": "ResponseId",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "31ad3b84-8f23-4aaf-a6fb-4577e066cd6b",
+            "sourceColumn": "ResponseId",
+            "summarizeBy": "count"
+          },
+          {
+            "name": "MainBranch",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "e1b52afc-6540-4e07-a802-029abacf12de",
+            "sourceColumn": "MainBranch",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Age",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "b5022438-57bd-4236-9d44-c3296e4c8f1e",
+            "sourceColumn": "Age",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RemoteWork",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "77301ec7-981e-4c5a-96ef-a862220e249a",
+            "sourceColumn": "RemoteWork",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CodingActivities",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a1fed153-7c89-46a6-b162-6895fe1bc50c",
+            "sourceColumn": "CodingActivities",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "EdLevel",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "9e831468-3e58-4536-9780-08821e33c830",
+            "sourceColumn": "EdLevel",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "YearsCode",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "f4bb05b7-c173-48a4-ba48-8b9d9d29b698",
+            "sourceColumn": "YearsCode",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DevType",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "e3230142-acfd-4d35-ab63-85bc1fcec5aa",
+            "sourceColumn": "DevType",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OrgSize",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "2ea7ca43-d226-4e30-85c0-7bb35efa0855",
+            "sourceColumn": "OrgSize",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Country",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "df79545b-eac6-4b7b-b009-afe619f71ae8",
+            "sourceColumn": "Country",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Currency",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "2a555432-6b1f-4ef1-8e13-4c053400857a",
+            "sourceColumn": "Currency",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CompTotal",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "f8e00818-e465-43ac-8533-736a0a2dfa72",
+            "sourceColumn": "CompTotal",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "LanguageHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "892c8ae3-5fc4-449b-ac1f-b987ca90bf82",
+            "sourceColumn": "LanguageHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LanguageWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "12f6cf36-a4bc-4281-850b-04cea9d48ad5",
+            "sourceColumn": "LanguageWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DatabaseHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "2fd384a4-a490-4d6c-9f6f-ee72cce65d94",
+            "sourceColumn": "DatabaseHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DatabaseWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "5030e61d-337d-49d1-a7d8-c4008ccc2fbb",
+            "sourceColumn": "DatabaseWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PlatformHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "cafbc8af-77be-4725-89a9-3b42e32645a2",
+            "sourceColumn": "PlatformHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PlatformWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "d18d6ff4-045d-4a00-8183-70f9b12c5f04",
+            "sourceColumn": "PlatformWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "WebframeHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "7d541ba4-22fd-4329-8f89-ee8a492ad343",
+            "sourceColumn": "WebframeHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "WebframeWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "2c93457e-5c48-47ec-a388-b3a39fbc1cbf",
+            "sourceColumn": "WebframeWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MiscTechHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "33f0e69a-1467-478c-9d60-5abfc115bb95",
+            "sourceColumn": "MiscTechHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MiscTechWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "20b6d46e-9562-4e6a-9b9a-5e4ab65589dd",
+            "sourceColumn": "MiscTechWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ToolsTechHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ec02f78c-8d2e-40cd-82a1-7001bd213252",
+            "sourceColumn": "ToolsTechHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ToolsTechWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ed17dff6-4f13-4bbd-b701-c1fa145ac555",
+            "sourceColumn": "ToolsTechWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "NEWCollabToolsHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a00db02c-f80e-447b-8465-758a850a8687",
+            "sourceColumn": "NEWCollabToolsHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "NEWCollabToolsWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "48ed2692-e036-47dc-87ed-2966790abe32",
+            "sourceColumn": "NEWCollabToolsWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OpSysPersonal use",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "df612b60-f383-4973-874c-53dcdd512fcc",
+            "sourceColumn": "OpSysPersonal use",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OpSysProfessional use",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "7e725816-0bf3-41ef-a8f3-3311d4e9ae8d",
+            "sourceColumn": "OpSysProfessional use",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OfficeStackAsyncHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "24156a79-6323-4829-aed7-6d33a4181ff8",
+            "sourceColumn": "OfficeStackAsyncHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OfficeStackAsyncWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "c639f1f2-6421-49c5-be19-88e73771e3ef",
+            "sourceColumn": "OfficeStackAsyncWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OfficeStackSyncHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "5adc5200-6f7d-4e86-b165-b6167e3e7bdc",
+            "sourceColumn": "OfficeStackSyncHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OfficeStackSyncWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "4f86927e-415a-40fc-a315-256c67425002",
+            "sourceColumn": "OfficeStackSyncWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ICorPM",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "28ee175c-4689-49b8-85b5-950603fe7f3a",
+            "sourceColumn": "ICorPM",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "WorkExp",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "64cd6bfb-6ed3-4fc5-bd1d-afde8482a8ab",
+            "sourceColumn": "WorkExp",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ProfessionalTech",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "69f5656c-e6d1-45c9-93ee-e55d805d8ec4",
+            "sourceColumn": "ProfessionalTech",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Industry",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "4e92a83c-a183-4459-a996-e69feef29f51",
+            "sourceColumn": "Industry",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ConvertedCompYearly",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "97c43dd1-9d51-4e5f-845f-1cebb1847c5a",
+            "sourceColumn": "ConvertedCompYearly",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Employment",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "852abb4f-06cb-4b06-886c-396b6c4eff25",
+            "sourceColumn": "Employment",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "7ff0f95a-da89-4a89-b779-3a7fbb1d8d18",
+        "partitions": [
+          {
+            "name": "employment_salary",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"D:\\Projects\\Stack-overflow-dev-survey-analysis\\data\\pandas_processed.csv\"),[Delimiter=\",\", Columns=79, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"ResponseId\", Int64.Type}, {\"MainBranch\", type text}, {\"Age\", type text}, {\"Employment\", type text}, {\"RemoteWork\", type text}, {\"CodingActivities\", type text}, {\"EdLevel\", type text}, {\"LearnCode\", type text}, {\"LearnCodeOnline\", type text}, {\"LearnCodeCoursesCert\", type text}, {\"YearsCode\", type text}, {\"DevType\", type text}, {\"OrgSize\", type text}, {\"PurchaseInfluence\", type text}, {\"TechList\", type text}, {\"BuyNewTool\", type text}, {\"Country\", type text}, {\"Currency\", type text}, {\"CompTotal\", type text}, {\"LanguageHaveWorkedWith\", type text}, {\"LanguageWantToWorkWith\", type text}, {\"DatabaseHaveWorkedWith\", type text}, {\"DatabaseWantToWorkWith\", type text}, {\"PlatformHaveWorkedWith\", type text}, {\"PlatformWantToWorkWith\", type text}, {\"WebframeHaveWorkedWith\", type text}, {\"WebframeWantToWorkWith\", type text}, {\"MiscTechHaveWorkedWith\", type text}, {\"MiscTechWantToWorkWith\", type text}, {\"ToolsTechHaveWorkedWith\", type text}, {\"ToolsTechWantToWorkWith\", type text}, {\"NEWCollabToolsHaveWorkedWith\", type text}, {\"NEWCollabToolsWantToWorkWith\", type text}, {\"OpSysPersonal use\", type text}, {\"OpSysProfessional use\", type text}, {\"OfficeStackAsyncHaveWorkedWith\", type text}, {\"OfficeStackAsyncWantToWorkWith\", type text}, {\"OfficeStackSyncHaveWorkedWith\", type text}, {\"OfficeStackSyncWantToWorkWith\", type text}, {\"AISearchHaveWorkedWith\", type text}, {\"AISearchWantToWorkWith\", type text}, {\"AIDevHaveWorkedWith\", type text}, {\"AIDevWantToWorkWith\", type text}, {\"NEWSOSites\", type text}, {\"SOVisitFreq\", type text}, {\"SOAccount\", type text}, {\"SOPartFreq\", type text}, {\"SOComm\", type text}, {\"AISelect\", type text}, {\"AISent\", type text}, {\"AIAcc\", type text}, {\"AIBen\", type text}, {\"AIToolInterested in Using\", type text}, {\"AIToolCurrently Using\", type text}, {\"AIToolNot interested in Using\", type text}, {\"AINextVery different\", type text}, {\"AINextNeither different nor similar\", type text}, {\"AINextSomewhat similar\", type text}, {\"AINextVery similar\", type text}, {\"AINextSomewhat different\", type text}, {\"TBranch\", type text}, {\"ICorPM\", type text}, {\"WorkExp\", type text}, {\"Knowledge_1\", type text}, {\"Knowledge_2\", type text}, {\"Knowledge_3\", type text}, {\"Knowledge_4\", type text}, {\"Knowledge_5\", type text}, {\"Knowledge_6\", type text}, {\"Knowledge_7\", type text}, {\"Knowledge_8\", type text}, {\"Frequency_1\", type text}, {\"Frequency_2\", type text}, {\"Frequency_3\", type text}, {\"TimeSearching\", type text}, {\"TimeAnswering\", type text}, {\"ProfessionalTech\", type text}, {\"Industry\", type text}, {\"ConvertedCompYearly\", type text}}),",
+                "    #\"Age replace years\" = Table.ReplaceValue(#\"Changed Type\",\"years old\",\"\",Replacer.ReplaceText,{\"Age\"}),",
+                "    #\"Age replace years 2\" = Table.ReplaceValue(#\"Age replace years\",\"years\",\"\",Replacer.ReplaceText,{\"Age\"}),",
+                "    #\"OrgSize employees replace\" = Table.ReplaceValue(#\"Age replace years 2\",\"employees\",\"\",Replacer.ReplaceText,{\"OrgSize\"}),",
+                "    #\"CompTotal remove .0\" = Table.ReplaceValue(#\"OrgSize employees replace\",\".0\",\"\",Replacer.ReplaceText,{\"CompTotal\"}),",
+                "    #\"CompTotal to decimal\" = Table.TransformColumnTypes(#\"CompTotal remove .0\",{{\"CompTotal\", type number}}),",
+                "    #\"ConvertedComp remove .0\" = Table.ReplaceValue(#\"CompTotal to decimal\",\".0\",\"\",Replacer.ReplaceText,{\"ConvertedCompYearly\"}),",
+                "    #\"ConvertedComp to decimal\" = Table.TransformColumnTypes(#\"ConvertedComp remove .0\",{{\"ConvertedCompYearly\", type number}}),",
+                "    #\"Removed Irrelevant Columns\" = Table.RemoveColumns(#\"ConvertedComp to decimal\",{\"PurchaseInfluence\", \"TechList\", \"BuyNewTool\", \"AISearchHaveWorkedWith\", \"AISearchWantToWorkWith\", \"AIDevHaveWorkedWith\", \"AIDevWantToWorkWith\", \"NEWSOSites\", \"SOVisitFreq\", \"SOAccount\", \"SOPartFreq\", \"SOComm\", \"AISelect\", \"AISent\", \"AIAcc\", \"AIBen\", \"AIToolInterested in Using\", \"AIToolCurrently Using\", \"AIToolNot interested in Using\", \"AINextVery different\", \"AINextNeither different nor similar\", \"AINextSomewhat similar\", \"AINextVery similar\", \"AINextSomewhat different\", \"TBranch\", \"Knowledge_1\", \"Knowledge_2\", \"Knowledge_3\", \"Knowledge_4\", \"Knowledge_5\", \"Knowledge_6\", \"Knowledge_7\", \"Knowledge_8\", \"Frequency_1\", \"Frequency_2\", \"Frequency_3\", \"TimeSearching\", \"TimeAnswering\",\"LearnCode\", \"LearnCodeOnline\", \"LearnCodeCoursesCert\"}),",
+                "    #\"Split employment by Delimiter\" = Table.SplitColumn(#\"Removed Irrelevant Columns\", \"Employment\", Splitter.SplitTextByDelimiter(\";\", QuoteStyle.Csv), {\"Employment.1\", \"Employment.2\", \"Employment.3\"}),",
+                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Split employment by Delimiter\",{{\"Employment.1\", type text}, {\"Employment.2\", type text}, {\"Employment.3\", type text}}),",
+                "    #\"Unpivoted Employment\" = Table.UnpivotOtherColumns(#\"Changed Type1\", {\"ResponseId\", \"MainBranch\", \"Age\", \"RemoteWork\", \"CodingActivities\", \"EdLevel\", \"YearsCode\", \"DevType\", \"OrgSize\", \"Country\", \"Currency\", \"CompTotal\", \"LanguageHaveWorkedWith\", \"LanguageWantToWorkWith\", \"DatabaseHaveWorkedWith\", \"DatabaseWantToWorkWith\", \"PlatformHaveWorkedWith\", \"PlatformWantToWorkWith\", \"WebframeHaveWorkedWith\", \"WebframeWantToWorkWith\", \"MiscTechHaveWorkedWith\", \"MiscTechWantToWorkWith\", \"ToolsTechHaveWorkedWith\", \"ToolsTechWantToWorkWith\", \"NEWCollabToolsHaveWorkedWith\", \"NEWCollabToolsWantToWorkWith\", \"OpSysPersonal use\", \"OpSysProfessional use\", \"OfficeStackAsyncHaveWorkedWith\", \"OfficeStackAsyncWantToWorkWith\", \"OfficeStackSyncHaveWorkedWith\", \"OfficeStackSyncWantToWorkWith\", \"ICorPM\", \"WorkExp\", \"ProfessionalTech\", \"Industry\", \"ConvertedCompYearly\"}, \"Attribute\", \"Value\"),",
+                "    #\"Removed attribute\" = Table.RemoveColumns(#\"Unpivoted Employment\",{\"Attribute\"}),",
+                "    #\"Renamed value to employment\" = Table.RenameColumns(#\"Removed attribute\",{{\"Value\", \"Employment\"}}),",
+                "    #\"Reordered Columns\" = Table.ReorderColumns(#\"Renamed value to employment\",{\"ResponseId\", \"MainBranch\", \"Age\", \"Employment\", \"RemoteWork\", \"CodingActivities\", \"EdLevel\", \"YearsCode\", \"DevType\", \"OrgSize\", \"Country\", \"Currency\", \"CompTotal\", \"LanguageHaveWorkedWith\", \"LanguageWantToWorkWith\", \"DatabaseHaveWorkedWith\", \"DatabaseWantToWorkWith\", \"PlatformHaveWorkedWith\", \"PlatformWantToWorkWith\", \"WebframeHaveWorkedWith\", \"WebframeWantToWorkWith\", \"MiscTechHaveWorkedWith\", \"MiscTechWantToWorkWith\", \"ToolsTechHaveWorkedWith\", \"ToolsTechWantToWorkWith\", \"NEWCollabToolsHaveWorkedWith\", \"NEWCollabToolsWantToWorkWith\", \"OpSysPersonal use\", \"OpSysProfessional use\", \"OfficeStackAsyncHaveWorkedWith\", \"OfficeStackAsyncWantToWorkWith\", \"OfficeStackSyncHaveWorkedWith\", \"OfficeStackSyncWantToWorkWith\", \"ICorPM\", \"WorkExp\", \"ProfessionalTech\", \"Industry\", \"ConvertedCompYearly\"})",
+                "in",
+                "    #\"Reordered Columns\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

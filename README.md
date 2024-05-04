@@ -61,7 +61,7 @@ TechList - categorical ✅ checked input answers <br>
 BuyNewTool - categorical list ✅ checked input answers <br>
 Country - categorical ✅ <br>
 Currency - categorical ✅ <br>
-CompTotal integer ✅ casted to int, removed unreal values <br>
+CompTotal integer ✅ removed unreal values <br>
 LanguageHaveWorkedWith - categorical list ✅ checked input answers <br>
 LanguageWantToWorkWith - categorical list ✅ user inputs check omitted <br>
 DatabaseHaveWorkedWith - categorical list ✅ user inputs check omitted <br>
