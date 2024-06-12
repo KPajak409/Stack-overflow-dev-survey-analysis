@@ -38,6 +38,15 @@
       "returnErrorValuesAsNull": true
     },
     "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "relationships": [
+      {
+        "name": "aeb8f7ff-293f-47a5-b1b6-f2e9399f327a",
+        "fromColumn": "ResponseId",
+        "fromTable": "employment_salary",
+        "toColumn": "ResponseId",
+        "toTable": "power_query_processed"
+      }
+    ],
     "sourceQueryCulture": "pl-PL",
     "tables": [
       {
@@ -271,6 +280,20 @@
               "SELECTEDVALUE(employment_salary[country],\"Total\")"
             ],
             "lineageTag": "eaca987e-932d-41ea-b157-dd32fd7e0d2d"
+          },
+          {
+            "name": "Respondents labels",
+            "expression": "DISTINCTCOUNT(employment_salary[ResponseId]) & \" resp.\"",
+            "lineageTag": "6d92844f-f341-4e67-be91-c386c3c7ed14"
+          },
+          {
+            "name": "Distinct median",
+            "lineageTag": "6d35f84e-fad5-4b87-958c-9584981d1419"
+          },
+          {
+            "name": "BG transparent",
+            "expression": "\"rgba(255,255,255,0)\"",
+            "lineageTag": "5bcc639e-cd43-4229-8d6e-8e87871138b5"
           }
         ],
         "partitions": [
@@ -1489,7 +1512,7 @@
             "formatString": "0",
             "lineageTag": "d8eac524-7b32-4f84-8498-81a7f71ed2ea",
             "sourceColumn": "ResponseId",
-            "summarizeBy": "count"
+            "summarizeBy": "none"
           },
           {
             "name": "MainBranch",
@@ -1727,7 +1750,7 @@
             "dataType": "double",
             "lineageTag": "4b142488-afa1-413e-a294-ec648acc200e",
             "sourceColumn": "CompTotal",
-            "summarizeBy": "sum"
+            "summarizeBy": "none"
           },
           {
             "name": "LanguageHaveWorkedWith",
@@ -2511,7 +2534,7 @@
             "dataType": "double",
             "lineageTag": "547ebdb4-7b79-4405-aae6-db36c374ee2d",
             "sourceColumn": "ConvertedCompYearly",
-            "summarizeBy": "sum"
+            "summarizeBy": "none"
           }
         ],
         "lineageTag": "e1663095-646f-4594-afd0-f6f2c1168956",
@@ -2565,7 +2588,7 @@
             "formatString": "0",
             "lineageTag": "31ad3b84-8f23-4aaf-a6fb-4577e066cd6b",
             "sourceColumn": "ResponseId",
-            "summarizeBy": "count"
+            "summarizeBy": "none"
           },
           {
             "name": "MainBranch",

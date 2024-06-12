@@ -4,8 +4,8 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 669,
-        "y": 140
+        "x": 255,
+        "y": 18
       },
       "nodes": [
         {
@@ -49,8 +49,8 @@
         },
         {
           "location": {
-            "x": 1174,
-            "y": 108.5625
+            "x": 780,
+            "y": 167.5625
           },
           "nodeIndex": "power_query_processed",
           "nodeLineageTag": "e1663095-646f-4594-afd0-f6f2c1168956",
@@ -62,8 +62,8 @@
         },
         {
           "location": {
-            "x": 676,
-            "y": 187.9375
+            "x": 281,
+            "y": 161.9375
           },
           "nodeIndex": "employment_salary",
           "nodeLineageTag": "7ff0f95a-da89-4a89-b779-3a7fbb1d8d18",
