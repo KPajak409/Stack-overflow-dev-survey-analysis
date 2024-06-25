@@ -4,7 +4,7 @@
     "annotations": [
       {
         "name": "PBI_QueryOrder",
-        "value": "[\"Measure Table\",\"survey_results_schema\",\"pandas_processed\",\"power_query_processed\",\"employment_salary\"]"
+        "value": "[\"survey_results_schema\",\"pandas_processed\",\"power_query_processed\",\"employment_salary\",\"positions\",\"education level\",\"Sheet1\",\"languages sympathy\"]"
       },
       {
         "name": "__PBI_TimeIntelligenceEnabled",
@@ -43,6 +43,46 @@
         "name": "aeb8f7ff-293f-47a5-b1b6-f2e9399f327a",
         "fromColumn": "ResponseId",
         "fromTable": "employment_salary",
+        "toColumn": "ResponseId",
+        "toTable": "power_query_processed"
+      },
+      {
+        "name": "654c101d-0ef8-4e2a-ac43-8132b69f8c2a",
+        "fromColumn": "ResponseId",
+        "fromTable": "positions",
+        "toColumn": "ResponseId",
+        "toTable": "power_query_processed"
+      },
+      {
+        "name": "d28106d2-e942-4452-b8dc-65bc1794470c",
+        "crossFilteringBehavior": "bothDirections",
+        "fromCardinality": "one",
+        "fromColumn": "ResponseId",
+        "fromTable": "education level",
+        "toColumn": "ResponseId",
+        "toTable": "power_query_processed"
+      },
+      {
+        "name": "d71ca9b9-5dc2-48c6-a6fb-f4ba17a83be7",
+        "crossFilteringBehavior": "bothDirections",
+        "fromCardinality": "one",
+        "fromColumn": "ResponseId",
+        "fromTable": "education level",
+        "isActive": false,
+        "toColumn": "ResponseId",
+        "toTable": "pandas_processed"
+      },
+      {
+        "name": "8e8a093d-103e-46d8-9911-023dc0893173",
+        "fromColumn": "ResponseId",
+        "fromTable": "languages sympathy",
+        "toColumn": "ResponseId",
+        "toTable": "pandas_processed"
+      },
+      {
+        "name": "ca1d2408-dd08-4d07-9711-2f17eacc7ebc",
+        "fromColumn": "ResponseId",
+        "fromTable": "languages sympathy",
         "toColumn": "ResponseId",
         "toTable": "power_query_processed"
       }
@@ -260,61 +300,6 @@
         ]
       },
       {
-        "name": "Measure Table",
-        "annotations": [
-          {
-            "name": "PBI_ResultType",
-            "value": "Table"
-          },
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
-          }
-        ],
-        "lineageTag": "6428ca73-644c-4881-a509-9de3b5a49c58",
-        "measures": [
-          {
-            "name": "CountryCard",
-            "expression": [
-              "",
-              "SELECTEDVALUE(employment_salary[country],\"Total\")"
-            ],
-            "lineageTag": "eaca987e-932d-41ea-b157-dd32fd7e0d2d"
-          },
-          {
-            "name": "Respondents labels",
-            "expression": "DISTINCTCOUNT(employment_salary[ResponseId]) & \" resp.\"",
-            "lineageTag": "6d92844f-f341-4e67-be91-c386c3c7ed14"
-          },
-          {
-            "name": "Distinct median",
-            "lineageTag": "6d35f84e-fad5-4b87-958c-9584981d1419"
-          },
-          {
-            "name": "BG transparent",
-            "expression": "\"rgba(255,255,255,0)\"",
-            "lineageTag": "5bcc639e-cd43-4229-8d6e-8e87871138b5"
-          }
-        ],
-        "partitions": [
-          {
-            "name": "Measure Table",
-            "mode": "import",
-            "source": {
-              "expression": [
-                "let",
-                "    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"i44FAA==\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),",
-                "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"Column1\", type text}}),",
-                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Changed Type\",{\"Column1\"})",
-                "in",
-                "    #\"Removed Columns\""
-              ],
-              "type": "m"
-            }
-          }
-        ]
-      },
-      {
         "name": "survey_results_schema",
         "annotations": [
           {
@@ -451,7 +436,7 @@
             "formatString": "0",
             "lineageTag": "c4cada29-1322-454d-966d-687fdc378e4b",
             "sourceColumn": "ResponseId",
-            "summarizeBy": "count"
+            "summarizeBy": "none"
           },
           {
             "name": "MainBranch",
@@ -1750,7 +1735,7 @@
             "dataType": "double",
             "lineageTag": "4b142488-afa1-413e-a294-ec648acc200e",
             "sourceColumn": "CompTotal",
-            "summarizeBy": "none"
+            "summarizeBy": "sum"
           },
           {
             "name": "LanguageHaveWorkedWith",
@@ -2534,7 +2519,7 @@
             "dataType": "double",
             "lineageTag": "547ebdb4-7b79-4405-aae6-db36c374ee2d",
             "sourceColumn": "ConvertedCompYearly",
-            "summarizeBy": "none"
+            "summarizeBy": "sum"
           }
         ],
         "lineageTag": "e1663095-646f-4594-afd0-f6f2c1168956",
@@ -2554,9 +2539,11 @@
                 "    #\"CompTotal remove .0\" = Table.ReplaceValue(#\"OrgSize employees replace\",\".0\",\"\",Replacer.ReplaceText,{\"CompTotal\"}),",
                 "    #\"CompTotal to decimal\" = Table.TransformColumnTypes(#\"CompTotal remove .0\",{{\"CompTotal\", type number}}),",
                 "    #\"ConvertedComp remove .0\" = Table.ReplaceValue(#\"CompTotal to decimal\",\".0\",\"\",Replacer.ReplaceText,{\"ConvertedCompYearly\"}),",
-                "    #\"ConvertedComp to decimal\" = Table.TransformColumnTypes(#\"ConvertedComp remove .0\",{{\"ConvertedCompYearly\", type number}})",
+                "    #\"ConvertedComp to decimal\" = Table.TransformColumnTypes(#\"ConvertedComp remove .0\",{{\"ConvertedCompYearly\", type number}}),",
+                "    #\"Replaced Value\" = Table.ReplaceValue(#\"ConvertedComp to decimal\",\"2 to 9\",\"2 to 19\",Replacer.ReplaceText,{\"OrgSize\"}),",
+                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Replaced Value\",\"10 to 19\",\"2 to 19\",Replacer.ReplaceText,{\"OrgSize\"})",
                 "in",
-                "    #\"ConvertedComp to decimal\""
+                "    #\"Replaced Value1\""
               ],
               "type": "m"
             }
@@ -2647,13 +2634,13 @@
             "annotations": [
               {
                 "name": "SummarizationSetBy",
-                "value": "Automatic"
+                "value": "User"
               }
             ],
             "dataType": "string",
             "lineageTag": "9e831468-3e58-4536-9780-08821e33c830",
             "sourceColumn": "EdLevel",
-            "summarizeBy": "none"
+            "summarizeBy": "distinctCount"
           },
           {
             "name": "YearsCode",
@@ -2736,19 +2723,6 @@
             "lineageTag": "f8e00818-e465-43ac-8533-736a0a2dfa72",
             "sourceColumn": "CompTotal",
             "summarizeBy": "sum"
-          },
-          {
-            "name": "LanguageHaveWorkedWith",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "string",
-            "lineageTag": "892c8ae3-5fc4-449b-ac1f-b987ca90bf82",
-            "sourceColumn": "LanguageHaveWorkedWith",
-            "summarizeBy": "none"
           },
           {
             "name": "LanguageWantToWorkWith",
@@ -3078,6 +3052,19 @@
             "lineageTag": "852abb4f-06cb-4b06-886c-396b6c4eff25",
             "sourceColumn": "Employment",
             "summarizeBy": "none"
+          },
+          {
+            "name": "LanguageHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "238732b1-9cab-4009-b54e-d3adfa0cf33b",
+            "sourceColumn": "LanguageHaveWorkedWith",
+            "summarizeBy": "none"
           }
         ],
         "lineageTag": "7ff0f95a-da89-4a89-b779-3a7fbb1d8d18",
@@ -3104,9 +3091,492 @@
                 "    #\"Unpivoted Employment\" = Table.UnpivotOtherColumns(#\"Changed Type1\", {\"ResponseId\", \"MainBranch\", \"Age\", \"RemoteWork\", \"CodingActivities\", \"EdLevel\", \"YearsCode\", \"DevType\", \"OrgSize\", \"Country\", \"Currency\", \"CompTotal\", \"LanguageHaveWorkedWith\", \"LanguageWantToWorkWith\", \"DatabaseHaveWorkedWith\", \"DatabaseWantToWorkWith\", \"PlatformHaveWorkedWith\", \"PlatformWantToWorkWith\", \"WebframeHaveWorkedWith\", \"WebframeWantToWorkWith\", \"MiscTechHaveWorkedWith\", \"MiscTechWantToWorkWith\", \"ToolsTechHaveWorkedWith\", \"ToolsTechWantToWorkWith\", \"NEWCollabToolsHaveWorkedWith\", \"NEWCollabToolsWantToWorkWith\", \"OpSysPersonal use\", \"OpSysProfessional use\", \"OfficeStackAsyncHaveWorkedWith\", \"OfficeStackAsyncWantToWorkWith\", \"OfficeStackSyncHaveWorkedWith\", \"OfficeStackSyncWantToWorkWith\", \"ICorPM\", \"WorkExp\", \"ProfessionalTech\", \"Industry\", \"ConvertedCompYearly\"}, \"Attribute\", \"Value\"),",
                 "    #\"Removed attribute\" = Table.RemoveColumns(#\"Unpivoted Employment\",{\"Attribute\"}),",
                 "    #\"Renamed value to employment\" = Table.RenameColumns(#\"Removed attribute\",{{\"Value\", \"Employment\"}}),",
-                "    #\"Reordered Columns\" = Table.ReorderColumns(#\"Renamed value to employment\",{\"ResponseId\", \"MainBranch\", \"Age\", \"Employment\", \"RemoteWork\", \"CodingActivities\", \"EdLevel\", \"YearsCode\", \"DevType\", \"OrgSize\", \"Country\", \"Currency\", \"CompTotal\", \"LanguageHaveWorkedWith\", \"LanguageWantToWorkWith\", \"DatabaseHaveWorkedWith\", \"DatabaseWantToWorkWith\", \"PlatformHaveWorkedWith\", \"PlatformWantToWorkWith\", \"WebframeHaveWorkedWith\", \"WebframeWantToWorkWith\", \"MiscTechHaveWorkedWith\", \"MiscTechWantToWorkWith\", \"ToolsTechHaveWorkedWith\", \"ToolsTechWantToWorkWith\", \"NEWCollabToolsHaveWorkedWith\", \"NEWCollabToolsWantToWorkWith\", \"OpSysPersonal use\", \"OpSysProfessional use\", \"OfficeStackAsyncHaveWorkedWith\", \"OfficeStackAsyncWantToWorkWith\", \"OfficeStackSyncHaveWorkedWith\", \"OfficeStackSyncWantToWorkWith\", \"ICorPM\", \"WorkExp\", \"ProfessionalTech\", \"Industry\", \"ConvertedCompYearly\"})",
+                "    #\"Reordered Columns\" = Table.ReorderColumns(#\"Renamed value to employment\",{\"ResponseId\", \"MainBranch\", \"Age\", \"Employment\", \"RemoteWork\", \"CodingActivities\", \"EdLevel\", \"YearsCode\", \"DevType\", \"OrgSize\", \"Country\", \"Currency\", \"CompTotal\", \"LanguageHaveWorkedWith\", \"LanguageWantToWorkWith\", \"DatabaseHaveWorkedWith\", \"DatabaseWantToWorkWith\", \"PlatformHaveWorkedWith\", \"PlatformWantToWorkWith\", \"WebframeHaveWorkedWith\", \"WebframeWantToWorkWith\", \"MiscTechHaveWorkedWith\", \"MiscTechWantToWorkWith\", \"ToolsTechHaveWorkedWith\", \"ToolsTechWantToWorkWith\", \"NEWCollabToolsHaveWorkedWith\", \"NEWCollabToolsWantToWorkWith\", \"OpSysPersonal use\", \"OpSysProfessional use\", \"OfficeStackAsyncHaveWorkedWith\", \"OfficeStackAsyncWantToWorkWith\", \"OfficeStackSyncHaveWorkedWith\", \"OfficeStackSyncWantToWorkWith\", \"ICorPM\", \"WorkExp\", \"ProfessionalTech\", \"Industry\", \"ConvertedCompYearly\"}),",
+                "    #\"Filtered Rows\" = Table.SelectRows(#\"Reordered Columns\", each true),",
+                "    #\"Replaced Value\" = Table.ReplaceValue(#\"Filtered Rows\",\"2 to 9\",\"2 to 19\",Replacer.ReplaceText,{\"OrgSize\"}),",
+                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Replaced Value\",\"10 to 19\",\"2 to 19\",Replacer.ReplaceText,{\"OrgSize\"})",
                 "in",
-                "    #\"Reordered Columns\""
+                "    #\"Replaced Value1\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "positions",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "changedProperties": [
+          {
+            "property": "Name"
+          }
+        ],
+        "columns": [
+          {
+            "name": "ResponseId",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "c6f03cf5-da7b-4aca-a897-e5d2ea7b0847",
+            "sourceColumn": "ResponseId",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "EdLevel",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "47aecf17-6620-4710-a241-2d578c66c832",
+            "sourceColumn": "EdLevel",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ConvertedCompYearly",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "c8fd32ce-f2fb-4d2b-87e4-5c7f6c0874c1",
+            "sourceColumn": "ConvertedCompYearly",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "language",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "002d77d6-e8ee-4189-af09-8f96eb2f57c9",
+            "sourceColumn": "language",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Country",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "42eeb60b-2c3c-451c-b77d-5b11b59eb591",
+            "sourceColumn": "Country",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "DevType",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "7e635da2-6178-4310-aa22-423533087fae",
+            "sourceColumn": "DevType",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "56ae0b17-4009-4bcd-a385-0a01a61f51f9",
+        "measures": [
+          {
+            "name": "Median languages",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": [
+              "CALCULATE(MEDIANX(values(positions[ResponseId]), calculate(average(positions[ConvertedCompYearly]))), positions[ConvertedCompYearly]>0)",
+              "    "
+            ],
+            "lineageTag": "4fb3fd64-4582-4579-b8c6-4ec2655fe2c2"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "positions",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"D:\\Projects\\Stack-overflow-dev-survey-analysis\\data\\pandas_processed.csv\"),[Delimiter=\",\", Columns=79, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"ResponseId\", Int64.Type}, {\"MainBranch\", type text}, {\"Age\", type text}, {\"Employment\", type text}, {\"RemoteWork\", type text}, {\"CodingActivities\", type text}, {\"EdLevel\", type text}, {\"LearnCode\", type text}, {\"LearnCodeOnline\", type text}, {\"LearnCodeCoursesCert\", type text}, {\"YearsCode\", type text}, {\"DevType\", type text}, {\"OrgSize\", type text}, {\"PurchaseInfluence\", type text}, {\"TechList\", type text}, {\"BuyNewTool\", type text}, {\"Country\", type text}, {\"Currency\", type text}, {\"CompTotal\", type text}, {\"LanguageHaveWorkedWith\", type text}, {\"LanguageWantToWorkWith\", type text}, {\"DatabaseHaveWorkedWith\", type text}, {\"DatabaseWantToWorkWith\", type text}, {\"PlatformHaveWorkedWith\", type text}, {\"PlatformWantToWorkWith\", type text}, {\"WebframeHaveWorkedWith\", type text}, {\"WebframeWantToWorkWith\", type text}, {\"MiscTechHaveWorkedWith\", type text}, {\"MiscTechWantToWorkWith\", type text}, {\"ToolsTechHaveWorkedWith\", type text}, {\"ToolsTechWantToWorkWith\", type text}, {\"NEWCollabToolsHaveWorkedWith\", type text}, {\"NEWCollabToolsWantToWorkWith\", type text}, {\"OpSysPersonal use\", type text}, {\"OpSysProfessional use\", type text}, {\"OfficeStackAsyncHaveWorkedWith\", type text}, {\"OfficeStackAsyncWantToWorkWith\", type text}, {\"OfficeStackSyncHaveWorkedWith\", type text}, {\"OfficeStackSyncWantToWorkWith\", type text}, {\"AISearchHaveWorkedWith\", type text}, {\"AISearchWantToWorkWith\", type text}, {\"AIDevHaveWorkedWith\", type text}, {\"AIDevWantToWorkWith\", type text}, {\"NEWSOSites\", type text}, {\"SOVisitFreq\", type text}, {\"SOAccount\", type text}, {\"SOPartFreq\", type text}, {\"SOComm\", type text}, {\"AISelect\", type text}, {\"AISent\", type text}, {\"AIAcc\", type text}, {\"AIBen\", type text}, {\"AIToolInterested in Using\", type text}, {\"AIToolCurrently Using\", type text}, {\"AIToolNot interested in Using\", type text}, {\"AINextVery different\", type text}, {\"AINextNeither different nor similar\", type text}, {\"AINextSomewhat similar\", type text}, {\"AINextVery similar\", type text}, {\"AINextSomewhat different\", type text}, {\"TBranch\", type text}, {\"ICorPM\", type text}, {\"WorkExp\", type text}, {\"Knowledge_1\", type text}, {\"Knowledge_2\", type text}, {\"Knowledge_3\", type text}, {\"Knowledge_4\", type text}, {\"Knowledge_5\", type text}, {\"Knowledge_6\", type text}, {\"Knowledge_7\", type text}, {\"Knowledge_8\", type text}, {\"Frequency_1\", type text}, {\"Frequency_2\", type text}, {\"Frequency_3\", type text}, {\"TimeSearching\", type text}, {\"TimeAnswering\", type text}, {\"ProfessionalTech\", type text}, {\"Industry\", type text}, {\"ConvertedCompYearly\", type text}}),",
+                "    #\"Age replace years\" = Table.ReplaceValue(#\"Changed Type\",\"years old\",\"\",Replacer.ReplaceText,{\"Age\"}),",
+                "    #\"Age replace years 2\" = Table.ReplaceValue(#\"Age replace years\",\"years\",\"\",Replacer.ReplaceText,{\"Age\"}),",
+                "    #\"OrgSize employees replace\" = Table.ReplaceValue(#\"Age replace years 2\",\"employees\",\"\",Replacer.ReplaceText,{\"OrgSize\"}),",
+                "    #\"CompTotal remove .0\" = Table.ReplaceValue(#\"OrgSize employees replace\",\".0\",\"\",Replacer.ReplaceText,{\"CompTotal\"}),",
+                "    #\"CompTotal to decimal\" = Table.TransformColumnTypes(#\"CompTotal remove .0\",{{\"CompTotal\", type number}}),",
+                "    #\"ConvertedComp remove .0\" = Table.ReplaceValue(#\"CompTotal to decimal\",\".0\",\"\",Replacer.ReplaceText,{\"ConvertedCompYearly\"}),",
+                "    #\"ConvertedComp to decimal\" = Table.TransformColumnTypes(#\"ConvertedComp remove .0\",{{\"ConvertedCompYearly\", type number}}),",
+                "    #\"Removed Other Columns\" = Table.SelectColumns(#\"ConvertedComp to decimal\",{\"ResponseId\", \"Country\", \"EdLevel\", \"DevType\", \"LanguageHaveWorkedWith\", \"ConvertedCompYearly\"}),",
+                "    #\"Split Column by Delimiter\" = Table.SplitColumn(#\"Removed Other Columns\", \"LanguageHaveWorkedWith\", Splitter.SplitTextByDelimiter(\";\", QuoteStyle.Csv), {\"LanguageHaveWorkedWith.1\", \"LanguageHaveWorkedWith.2\", \"LanguageHaveWorkedWith.3\", \"LanguageHaveWorkedWith.4\", \"LanguageHaveWorkedWith.5\", \"LanguageHaveWorkedWith.6\", \"LanguageHaveWorkedWith.7\", \"LanguageHaveWorkedWith.8\", \"LanguageHaveWorkedWith.9\", \"LanguageHaveWorkedWith.10\", \"LanguageHaveWorkedWith.11\", \"LanguageHaveWorkedWith.12\", \"LanguageHaveWorkedWith.13\", \"LanguageHaveWorkedWith.14\", \"LanguageHaveWorkedWith.15\", \"LanguageHaveWorkedWith.16\", \"LanguageHaveWorkedWith.17\", \"LanguageHaveWorkedWith.18\", \"LanguageHaveWorkedWith.19\"}),",
+                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Split Column by Delimiter\",{{\"LanguageHaveWorkedWith.1\", type text}, {\"LanguageHaveWorkedWith.2\", type text}, {\"LanguageHaveWorkedWith.3\", type text}, {\"LanguageHaveWorkedWith.4\", type text}, {\"LanguageHaveWorkedWith.5\", type text}, {\"LanguageHaveWorkedWith.6\", type text}, {\"LanguageHaveWorkedWith.7\", type text}, {\"LanguageHaveWorkedWith.8\", type text}, {\"LanguageHaveWorkedWith.9\", type text}, {\"LanguageHaveWorkedWith.10\", type text}, {\"LanguageHaveWorkedWith.11\", type text}, {\"LanguageHaveWorkedWith.12\", type text}, {\"LanguageHaveWorkedWith.13\", type text}, {\"LanguageHaveWorkedWith.14\", type text}, {\"LanguageHaveWorkedWith.15\", type text}, {\"LanguageHaveWorkedWith.16\", type text}, {\"LanguageHaveWorkedWith.17\", type text}, {\"LanguageHaveWorkedWith.18\", type text}, {\"LanguageHaveWorkedWith.19\", type text}}),",
+                "    #\"Unpivoted Columns\" = Table.UnpivotOtherColumns(#\"Changed Type1\", {\"ResponseId\", \"Country\", \"EdLevel\", \"DevType\", \"ConvertedCompYearly\"}, \"Attribute\", \"Value\"),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Unpivoted Columns\",{{\"Value\", \"language\"}}),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Renamed Columns\",{\"Attribute\"}),",
+                "    #\"Filtered Rows\" = Table.SelectRows(#\"Removed Columns\", each ([ConvertedCompYearly] <> null))",
+                "in",
+                "    #\"Filtered Rows\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "education level",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "ResponseId",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "ad32f00f-f39c-4a47-9ce2-2ea9e3928fbd",
+            "sourceColumn": "ResponseId",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "EdLevel",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "712ff1d4-432c-4aca-9c89-93e76dbcc6a2",
+            "sourceColumn": "EdLevel",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ConvertedCompYearly",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "0b77caee-975e-46a8-b528-67cc30a74a9d",
+            "sourceColumn": "ConvertedCompYearly",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "7cc83a18-d2f1-4ad6-bd62-214c76b8c086",
+        "partitions": [
+          {
+            "name": "education level",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"D:\\Projects\\Stack-overflow-dev-survey-analysis\\data\\pandas_processed.csv\"),[Delimiter=\",\", Columns=79, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"ResponseId\", Int64.Type}, {\"MainBranch\", type text}, {\"Age\", type text}, {\"Employment\", type text}, {\"RemoteWork\", type text}, {\"CodingActivities\", type text}, {\"EdLevel\", type text}, {\"LearnCode\", type text}, {\"LearnCodeOnline\", type text}, {\"LearnCodeCoursesCert\", type text}, {\"YearsCode\", type text}, {\"DevType\", type text}, {\"OrgSize\", type text}, {\"PurchaseInfluence\", type text}, {\"TechList\", type text}, {\"BuyNewTool\", type text}, {\"Country\", type text}, {\"Currency\", type text}, {\"CompTotal\", type text}, {\"LanguageHaveWorkedWith\", type text}, {\"LanguageWantToWorkWith\", type text}, {\"DatabaseHaveWorkedWith\", type text}, {\"DatabaseWantToWorkWith\", type text}, {\"PlatformHaveWorkedWith\", type text}, {\"PlatformWantToWorkWith\", type text}, {\"WebframeHaveWorkedWith\", type text}, {\"WebframeWantToWorkWith\", type text}, {\"MiscTechHaveWorkedWith\", type text}, {\"MiscTechWantToWorkWith\", type text}, {\"ToolsTechHaveWorkedWith\", type text}, {\"ToolsTechWantToWorkWith\", type text}, {\"NEWCollabToolsHaveWorkedWith\", type text}, {\"NEWCollabToolsWantToWorkWith\", type text}, {\"OpSysPersonal use\", type text}, {\"OpSysProfessional use\", type text}, {\"OfficeStackAsyncHaveWorkedWith\", type text}, {\"OfficeStackAsyncWantToWorkWith\", type text}, {\"OfficeStackSyncHaveWorkedWith\", type text}, {\"OfficeStackSyncWantToWorkWith\", type text}, {\"AISearchHaveWorkedWith\", type text}, {\"AISearchWantToWorkWith\", type text}, {\"AIDevHaveWorkedWith\", type text}, {\"AIDevWantToWorkWith\", type text}, {\"NEWSOSites\", type text}, {\"SOVisitFreq\", type text}, {\"SOAccount\", type text}, {\"SOPartFreq\", type text}, {\"SOComm\", type text}, {\"AISelect\", type text}, {\"AISent\", type text}, {\"AIAcc\", type text}, {\"AIBen\", type text}, {\"AIToolInterested in Using\", type text}, {\"AIToolCurrently Using\", type text}, {\"AIToolNot interested in Using\", type text}, {\"AINextVery different\", type text}, {\"AINextNeither different nor similar\", type text}, {\"AINextSomewhat similar\", type text}, {\"AINextVery similar\", type text}, {\"AINextSomewhat different\", type text}, {\"TBranch\", type text}, {\"ICorPM\", type text}, {\"WorkExp\", type text}, {\"Knowledge_1\", type text}, {\"Knowledge_2\", type text}, {\"Knowledge_3\", type text}, {\"Knowledge_4\", type text}, {\"Knowledge_5\", type text}, {\"Knowledge_6\", type text}, {\"Knowledge_7\", type text}, {\"Knowledge_8\", type text}, {\"Frequency_1\", type text}, {\"Frequency_2\", type text}, {\"Frequency_3\", type text}, {\"TimeSearching\", type text}, {\"TimeAnswering\", type text}, {\"ProfessionalTech\", type text}, {\"Industry\", type text}, {\"ConvertedCompYearly\", type text}}),",
+                "    #\"Age replace years\" = Table.ReplaceValue(#\"Changed Type\",\"years old\",\"\",Replacer.ReplaceText,{\"Age\"}),",
+                "    #\"Age replace years 2\" = Table.ReplaceValue(#\"Age replace years\",\"years\",\"\",Replacer.ReplaceText,{\"Age\"}),",
+                "    #\"OrgSize employees replace\" = Table.ReplaceValue(#\"Age replace years 2\",\"employees\",\"\",Replacer.ReplaceText,{\"OrgSize\"}),",
+                "    #\"CompTotal remove .0\" = Table.ReplaceValue(#\"OrgSize employees replace\",\".0\",\"\",Replacer.ReplaceText,{\"CompTotal\"}),",
+                "    #\"CompTotal to decimal\" = Table.TransformColumnTypes(#\"CompTotal remove .0\",{{\"CompTotal\", type number}}),",
+                "    #\"ConvertedComp remove .0\" = Table.ReplaceValue(#\"CompTotal to decimal\",\".0\",\"\",Replacer.ReplaceText,{\"ConvertedCompYearly\"}),",
+                "    #\"ConvertedComp to decimal\" = Table.TransformColumnTypes(#\"ConvertedComp remove .0\",{{\"ConvertedCompYearly\", type number}}),",
+                "    #\"Replaced Value\" = Table.ReplaceValue(#\"ConvertedComp to decimal\",\"2 to 9\",\"2 to 19\",Replacer.ReplaceText,{\"OrgSize\"}),",
+                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Replaced Value\",\"10 to 19\",\"2 to 19\",Replacer.ReplaceText,{\"OrgSize\"}),",
+                "    #\"Removed Other Columns\" = Table.SelectColumns(#\"Replaced Value1\",{\"ResponseId\", \"EdLevel\", \"ConvertedCompYearly\"})",
+                "in",
+                "    #\"Removed Other Columns\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Measures table",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "483ec3f22a5248ecb002028ba1d74ef1"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Column",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "6a8727f5-5d51-4af9-ad61-d1145cd1da58",
+            "sourceColumn": "[Column]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "c909f9e3-8d7f-445d-8bd6-8730928b3cb2",
+        "measures": [
+          {
+            "name": "BG Transparent",
+            "expression": "\"rgba(255,255,255,0)\"",
+            "lineageTag": "4348f7af-867f-4bc3-9f8c-432d850a48b7"
+          },
+          {
+            "name": "Median employment",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": "CALCULATE(MEDIANX(values(employment_salary[ResponseId]), calculate(average(employment_salary[ConvertedCompYearly]))), employment_salary[ConvertedCompYearly]>0)",
+            "lineageTag": "4b4157e0-402d-40c9-af6a-217f3fd1457b"
+          },
+          {
+            "name": "Selected Country Card",
+            "expression": "if(ISFILTERED(positions[Country]), SELECTEDVALUE(positions[Country], \"-\"), \"-\")",
+            "lineageTag": "97bd1243-736a-44e0-ace9-60e59bcb0ff2"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Measures table",
+            "mode": "import",
+            "source": {
+              "expression": "Row(\"Column\", BLANK())",
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Sheet1",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Column1",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "626b2708-82a5-4696-8d20-d214114b97b3",
+            "sourceColumn": "Column1",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Column2",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "0420d001-5957-4411-815f-4bead23df9d7",
+            "sourceColumn": "Column2",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "e9a3a895-065b-40ea-ba3d-dd2a0216f1e8",
+        "partitions": [
+          {
+            "name": "Sheet1",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Excel.Workbook(File.Contents(\"D:\\gradient_data.xlsx\"), null, true),",
+                "    Sheet1_Sheet = Source{[Item=\"Sheet1\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(Sheet1_Sheet,{{\"Column1\", type text}, {\"Column2\", Int64.Type}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "languages sympathy",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "ResponseId",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "27fd010e-d5e6-4458-9ed0-ae3ff14a48e0",
+            "sourceColumn": "ResponseId",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ConvertedCompYearly",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "312a33b0-f326-4b85-8f42-0cb48d71e87d",
+            "sourceColumn": "ConvertedCompYearly",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "LanguageHaveWorkedWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "8ac9c46b-0942-43e7-8f8c-82710b49797f",
+            "sourceColumn": "LanguageHaveWorkedWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LanguagesWantToWorkWith",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "78537539-16ea-49e3-b547-b66abba2ce6c",
+            "sourceColumn": "LanguagesWantToWorkWith",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Country",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "5d7f9254-2718-412c-ac80-4ad95ae134b7",
+            "sourceColumn": "Country",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "f155da99-83f4-4139-a035-fd4e52351c05",
+        "partitions": [
+          {
+            "name": "languages sympathy",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"D:\\Projects\\Stack-overflow-dev-survey-analysis\\data\\pandas_processed.csv\"),[Delimiter=\",\", Columns=79, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"ResponseId\", Int64.Type}, {\"MainBranch\", type text}, {\"Age\", type text}, {\"Employment\", type text}, {\"RemoteWork\", type text}, {\"CodingActivities\", type text}, {\"EdLevel\", type text}, {\"LearnCode\", type text}, {\"LearnCodeOnline\", type text}, {\"LearnCodeCoursesCert\", type text}, {\"YearsCode\", type text}, {\"DevType\", type text}, {\"OrgSize\", type text}, {\"PurchaseInfluence\", type text}, {\"TechList\", type text}, {\"BuyNewTool\", type text}, {\"Country\", type text}, {\"Currency\", type text}, {\"CompTotal\", type text}, {\"LanguageHaveWorkedWith\", type text}, {\"LanguageWantToWorkWith\", type text}, {\"DatabaseHaveWorkedWith\", type text}, {\"DatabaseWantToWorkWith\", type text}, {\"PlatformHaveWorkedWith\", type text}, {\"PlatformWantToWorkWith\", type text}, {\"WebframeHaveWorkedWith\", type text}, {\"WebframeWantToWorkWith\", type text}, {\"MiscTechHaveWorkedWith\", type text}, {\"MiscTechWantToWorkWith\", type text}, {\"ToolsTechHaveWorkedWith\", type text}, {\"ToolsTechWantToWorkWith\", type text}, {\"NEWCollabToolsHaveWorkedWith\", type text}, {\"NEWCollabToolsWantToWorkWith\", type text}, {\"OpSysPersonal use\", type text}, {\"OpSysProfessional use\", type text}, {\"OfficeStackAsyncHaveWorkedWith\", type text}, {\"OfficeStackAsyncWantToWorkWith\", type text}, {\"OfficeStackSyncHaveWorkedWith\", type text}, {\"OfficeStackSyncWantToWorkWith\", type text}, {\"AISearchHaveWorkedWith\", type text}, {\"AISearchWantToWorkWith\", type text}, {\"AIDevHaveWorkedWith\", type text}, {\"AIDevWantToWorkWith\", type text}, {\"NEWSOSites\", type text}, {\"SOVisitFreq\", type text}, {\"SOAccount\", type text}, {\"SOPartFreq\", type text}, {\"SOComm\", type text}, {\"AISelect\", type text}, {\"AISent\", type text}, {\"AIAcc\", type text}, {\"AIBen\", type text}, {\"AIToolInterested in Using\", type text}, {\"AIToolCurrently Using\", type text}, {\"AIToolNot interested in Using\", type text}, {\"AINextVery different\", type text}, {\"AINextNeither different nor similar\", type text}, {\"AINextSomewhat similar\", type text}, {\"AINextVery similar\", type text}, {\"AINextSomewhat different\", type text}, {\"TBranch\", type text}, {\"ICorPM\", type text}, {\"WorkExp\", type text}, {\"Knowledge_1\", type text}, {\"Knowledge_2\", type text}, {\"Knowledge_3\", type text}, {\"Knowledge_4\", type text}, {\"Knowledge_5\", type text}, {\"Knowledge_6\", type text}, {\"Knowledge_7\", type text}, {\"Knowledge_8\", type text}, {\"Frequency_1\", type text}, {\"Frequency_2\", type text}, {\"Frequency_3\", type text}, {\"TimeSearching\", type text}, {\"TimeAnswering\", type text}, {\"ProfessionalTech\", type text}, {\"Industry\", type text}, {\"ConvertedCompYearly\", type text}}),",
+                "    #\"Age replace years\" = Table.ReplaceValue(#\"Changed Type\",\"years old\",\"\",Replacer.ReplaceText,{\"Age\"}),",
+                "    #\"Age replace years 2\" = Table.ReplaceValue(#\"Age replace years\",\"years\",\"\",Replacer.ReplaceText,{\"Age\"}),",
+                "    #\"OrgSize employees replace\" = Table.ReplaceValue(#\"Age replace years 2\",\"employees\",\"\",Replacer.ReplaceText,{\"OrgSize\"}),",
+                "    #\"CompTotal remove .0\" = Table.ReplaceValue(#\"OrgSize employees replace\",\".0\",\"\",Replacer.ReplaceText,{\"CompTotal\"}),",
+                "    #\"CompTotal to decimal\" = Table.TransformColumnTypes(#\"CompTotal remove .0\",{{\"CompTotal\", type number}}),",
+                "    #\"ConvertedComp remove .0\" = Table.ReplaceValue(#\"CompTotal to decimal\",\".0\",\"\",Replacer.ReplaceText,{\"ConvertedCompYearly\"}),",
+                "    #\"ConvertedComp to decimal\" = Table.TransformColumnTypes(#\"ConvertedComp remove .0\",{{\"ConvertedCompYearly\", type number}}),",
+                "    #\"Replaced Value\" = Table.ReplaceValue(#\"ConvertedComp to decimal\",\"2 to 9\",\"2 to 19\",Replacer.ReplaceText,{\"OrgSize\"}),",
+                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Replaced Value\",\"10 to 19\",\"2 to 19\",Replacer.ReplaceText,{\"OrgSize\"}),",
+                "    #\"Removed Other Columns\" = Table.SelectColumns(#\"Replaced Value1\",{\"ResponseId\", \"LanguageHaveWorkedWith\",\"Country\", \"LanguageWantToWorkWith\", \"ConvertedCompYearly\"}),",
+                "    #\"Split Column by Delimiter\" = Table.SplitColumn(#\"Removed Other Columns\", \"LanguageHaveWorkedWith\", Splitter.SplitTextByDelimiter(\";\", QuoteStyle.Csv), {\"LanguageHaveWorkedWith.1\", \"LanguageHaveWorkedWith.2\", \"LanguageHaveWorkedWith.3\", \"LanguageHaveWorkedWith.4\", \"LanguageHaveWorkedWith.5\", \"LanguageHaveWorkedWith.6\", \"LanguageHaveWorkedWith.7\", \"LanguageHaveWorkedWith.8\", \"LanguageHaveWorkedWith.9\", \"LanguageHaveWorkedWith.10\", \"LanguageHaveWorkedWith.11\", \"LanguageHaveWorkedWith.12\", \"LanguageHaveWorkedWith.13\", \"LanguageHaveWorkedWith.14\", \"LanguageHaveWorkedWith.15\", \"LanguageHaveWorkedWith.16\", \"LanguageHaveWorkedWith.17\", \"LanguageHaveWorkedWith.18\", \"LanguageHaveWorkedWith.19\"}),",
+                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Split Column by Delimiter\",{{\"LanguageHaveWorkedWith.1\", type text}, {\"LanguageHaveWorkedWith.2\", type text}, {\"LanguageHaveWorkedWith.3\", type text}, {\"LanguageHaveWorkedWith.4\", type text}, {\"LanguageHaveWorkedWith.5\", type text}, {\"LanguageHaveWorkedWith.6\", type text}, {\"LanguageHaveWorkedWith.7\", type text}, {\"LanguageHaveWorkedWith.8\", type text}, {\"LanguageHaveWorkedWith.9\", type text}, {\"LanguageHaveWorkedWith.10\", type text}, {\"LanguageHaveWorkedWith.11\", type text}, {\"LanguageHaveWorkedWith.12\", type text}, {\"LanguageHaveWorkedWith.13\", type text}, {\"LanguageHaveWorkedWith.14\", type text}, {\"LanguageHaveWorkedWith.15\", type text}, {\"LanguageHaveWorkedWith.16\", type text}, {\"LanguageHaveWorkedWith.17\", type text}, {\"LanguageHaveWorkedWith.18\", type text}, {\"LanguageHaveWorkedWith.19\", type text}}),",
+                "    #\"Unpivoted Columns\" = Table.UnpivotOtherColumns(#\"Changed Type1\", {\"ResponseId\", \"LanguageWantToWorkWith\", \"Country\", \"ConvertedCompYearly\"}, \"Attribute\", \"Value\"),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Unpivoted Columns\",{{\"Value\", \"LanguageHaveWorkedWith\"}}),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Renamed Columns\",{\"Attribute\"}),",
+                "    #\"Split Column by Delimiter1\" = Table.SplitColumn(#\"Removed Columns\", \"LanguageWantToWorkWith\", Splitter.SplitTextByDelimiter(\";\", QuoteStyle.Csv), {\"LanguageWantToWorkWith.1\", \"LanguageWantToWorkWith.2\", \"LanguageWantToWorkWith.3\", \"LanguageWantToWorkWith.4\", \"LanguageWantToWorkWith.5\", \"LanguageWantToWorkWith.6\", \"LanguageWantToWorkWith.7\", \"LanguageWantToWorkWith.8\", \"LanguageWantToWorkWith.9\", \"LanguageWantToWorkWith.10\"}),",
+                "    #\"Changed Type2\" = Table.TransformColumnTypes(#\"Split Column by Delimiter1\",{{\"LanguageWantToWorkWith.1\", type text}, {\"LanguageWantToWorkWith.2\", type text}, {\"LanguageWantToWorkWith.3\", type text}, {\"LanguageWantToWorkWith.4\", type text}, {\"LanguageWantToWorkWith.5\", type text}, {\"LanguageWantToWorkWith.6\", type text}, {\"LanguageWantToWorkWith.7\", type text}, {\"LanguageWantToWorkWith.8\", type text}, {\"LanguageWantToWorkWith.9\", type text}, {\"LanguageWantToWorkWith.10\", type text}}),",
+                "    #\"Unpivoted Columns1\" = Table.UnpivotOtherColumns(#\"Changed Type2\", {\"ResponseId\", \"ConvertedCompYearly\", \"Country\", \"LanguageHaveWorkedWith\"}, \"Attribute\", \"Value\"),",
+                "    #\"Renamed Columns1\" = Table.RenameColumns(#\"Unpivoted Columns1\",{{\"Value\", \"LanguagesWantToWorkWith\"}}),",
+                "    #\"Removed Columns1\" = Table.RemoveColumns(#\"Renamed Columns1\",{\"Attribute\"}),",
+                "    #\"Filtered Rows\" = Table.SelectRows(#\"Removed Columns1\", each ([ConvertedCompYearly] <> null))",
+                "in",
+                "    #\"Filtered Rows\""
               ],
               "type": "m"
             }
