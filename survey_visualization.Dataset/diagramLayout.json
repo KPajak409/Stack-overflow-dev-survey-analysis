@@ -11,7 +11,7 @@
         {
           "location": {
             "x": 690,
-            "y": 2116.53076171875
+            "y": 2562.632080078125
           },
           "nodeIndex": "survey_results_schema",
           "nodeLineageTag": "db86982c-1f0d-4566-9379-90cd9b38ca23",
@@ -23,21 +23,8 @@
         },
         {
           "location": {
-            "x": 1172,
-            "y": 2014.03076171875
-          },
-          "nodeIndex": "pandas_processed",
-          "nodeLineageTag": "d83b2573-8e56-47bd-b931-45d449cfa7b3",
-          "size": {
-            "height": 300,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
             "x": 632,
-            "y": 1368.03076171875
+            "y": 1814.132080078125
           },
           "nodeIndex": "power_query_processed",
           "nodeLineageTag": "e1663095-646f-4594-afd0-f6f2c1168956",
@@ -49,11 +36,10 @@
         },
         {
           "location": {
-            "x": 281,
-            "y": 1477.40576171875
+            "x": 1468,
+            "y": 1020.265380859375
           },
           "nodeIndex": "employment_salary",
-          "nodeLineageTag": "7ff0f95a-da89-4a89-b779-3a7fbb1d8d18",
           "size": {
             "height": 300,
             "width": 234
@@ -63,7 +49,7 @@
         {
           "location": {
             "x": 1459,
-            "y": 1601.98388671875
+            "y": 2048.085205078125
           },
           "nodeIndex": "education level",
           "size": {
@@ -75,7 +61,7 @@
         {
           "location": {
             "x": 1286,
-            "y": 1315.83544921875
+            "y": 1761.936767578125
           },
           "nodeIndex": "Measures table",
           "nodeLineageTag": "c909f9e3-8d7f-445d-8bd6-8730928b3cb2",
@@ -87,21 +73,8 @@
         },
         {
           "location": {
-            "x": 1462,
-            "y": 1140.37646484375
-          },
-          "nodeIndex": "Sheet1",
-          "nodeLineageTag": "e9a3a895-065b-40ea-ba3d-dd2a0216f1e8",
-          "size": {
-            "height": 128,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
             "x": 1465,
-            "y": 892.20263671875
+            "y": 1338.303955078125
           },
           "nodeIndex": "languages sympathy",
           "nodeLineageTag": "f155da99-83f4-4139-a035-fd4e52351c05",
@@ -114,7 +87,7 @@
         {
           "location": {
             "x": 315,
-            "y": 1839.03076171875
+            "y": 2285.132080078125
           },
           "nodeIndex": "positions",
           "size": {
