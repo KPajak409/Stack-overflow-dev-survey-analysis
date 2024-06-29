@@ -14,12 +14,12 @@
 ## Handle data types
 - YearsCode - categorized from integer values
 ## Remove nonsense Answers and Unreadable data
-- Most of questions that allows user input doesn't contain this information in data. Only SOAI column contains user inputs.
+- Every question except SOAI that allows user input doesn't contain this information in data.
 - LearnCodeOnline - column contains one extra value which is not mentioned in possible answers of pdf version of survey: "Formal documentation provided by the owner of the tech". Additionally nonsense answer which is "Click to write Choice 20". Like above user inputs are trimmed.
-- CompTotal - the question is answered by the user through input, leading to unrealistic answers. Rows with CompTotal above $1 million are removed to get rid of outliers and reduce the influence of high earners on further analysis.
+- ConvertedCompYearly - the question is answered by the user through input, leading to unrealistic answers. Rows with value above $1 million are removed to get rid of outliers and reduce the influence of high earners on further analysis.
 
 ## Remove outliers
-
+Operations performed on each column contains: identifying data type, indication for me that work on certain column is done, operations performed.
 ## Columns name - dtype; isDone; operations
 ResponseId - integer unique ✅ checked <br>
 Q120 - string ✅ removed <br>
