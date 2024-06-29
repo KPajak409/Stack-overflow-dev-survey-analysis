@@ -4,7 +4,7 @@
     "annotations": [
       {
         "name": "PBI_QueryOrder",
-        "value": "[\"survey_results_schema\",\"power_query_processed\",\"employment_salary\",\"positions\",\"education level\",\"languages sympathy\"]"
+        "value": "[\"survey_results_schema\",\"power_query_processed\",\"employment_salary\",\"positions\",\"education level\",\"languages sympathy\",\"OrgSize sort\"]"
       },
       {
         "name": "__PBI_TimeIntelligenceEnabled",
@@ -68,6 +68,13 @@
         "fromTable": "languages sympathy",
         "toColumn": "ResponseId",
         "toTable": "power_query_processed"
+      },
+      {
+        "name": "42583e04-0384-4ab4-a34b-e7b5d1a33e38",
+        "fromColumn": "OrgSize",
+        "fromTable": "power_query_processed",
+        "toColumn": "OrgSize",
+        "toTable": "OrgSize sort"
       }
     ],
     "sourceQueryCulture": "pl-PL",
@@ -1452,7 +1459,7 @@
             "source": {
               "expression": [
                 "let",
-                "    Source = Csv.Document(File.Contents(\"D:\\Projects\\Stack-overflow-dev-survey-analysis\\pandas_processed.csv\"),[Delimiter=\",\", Columns=79, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    Source = Csv.Document(File.Contents(\"D:\\Projects\\Stack-overflow-dev-survey-analysis\\data\\pandas_processed.csv\"),[Delimiter=\",\", Columns=79, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
                 "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
                 "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"ResponseId\", Int64.Type}, {\"MainBranch\", type text}, {\"Age\", type text}, {\"Employment\", type text}, {\"RemoteWork\", type text}, {\"CodingActivities\", type text}, {\"EdLevel\", type text}, {\"LearnCode\", type text}, {\"LearnCodeOnline\", type text}, {\"LearnCodeCoursesCert\", type text}, {\"YearsCode\", type text}, {\"DevType\", type text}, {\"OrgSize\", type text}, {\"PurchaseInfluence\", type text}, {\"TechList\", type text}, {\"BuyNewTool\", type text}, {\"Country\", type text}, {\"Currency\", type text}, {\"CompTotal\", type text}, {\"LanguageHaveWorkedWith\", type text}, {\"LanguageWantToWorkWith\", type text}, {\"DatabaseHaveWorkedWith\", type text}, {\"DatabaseWantToWorkWith\", type text}, {\"PlatformHaveWorkedWith\", type text}, {\"PlatformWantToWorkWith\", type text}, {\"WebframeHaveWorkedWith\", type text}, {\"WebframeWantToWorkWith\", type text}, {\"MiscTechHaveWorkedWith\", type text}, {\"MiscTechWantToWorkWith\", type text}, {\"ToolsTechHaveWorkedWith\", type text}, {\"ToolsTechWantToWorkWith\", type text}, {\"NEWCollabToolsHaveWorkedWith\", type text}, {\"NEWCollabToolsWantToWorkWith\", type text}, {\"OpSysPersonal use\", type text}, {\"OpSysProfessional use\", type text}, {\"OfficeStackAsyncHaveWorkedWith\", type text}, {\"OfficeStackAsyncWantToWorkWith\", type text}, {\"OfficeStackSyncHaveWorkedWith\", type text}, {\"OfficeStackSyncWantToWorkWith\", type text}, {\"AISearchHaveWorkedWith\", type text}, {\"AISearchWantToWorkWith\", type text}, {\"AIDevHaveWorkedWith\", type text}, {\"AIDevWantToWorkWith\", type text}, {\"NEWSOSites\", type text}, {\"SOVisitFreq\", type text}, {\"SOAccount\", type text}, {\"SOPartFreq\", type text}, {\"SOComm\", type text}, {\"AISelect\", type text}, {\"AISent\", type text}, {\"AIAcc\", type text}, {\"AIBen\", type text}, {\"AIToolInterested in Using\", type text}, {\"AIToolCurrently Using\", type text}, {\"AIToolNot interested in Using\", type text}, {\"AINextVery different\", type text}, {\"AINextNeither different nor similar\", type text}, {\"AINextSomewhat similar\", type text}, {\"AINextVery similar\", type text}, {\"AINextSomewhat different\", type text}, {\"TBranch\", type text}, {\"ICorPM\", type text}, {\"WorkExp\", type text}, {\"Knowledge_1\", type text}, {\"Knowledge_2\", type text}, {\"Knowledge_3\", type text}, {\"Knowledge_4\", type text}, {\"Knowledge_5\", type text}, {\"Knowledge_6\", type text}, {\"Knowledge_7\", type text}, {\"Knowledge_8\", type text}, {\"Frequency_1\", type text}, {\"Frequency_2\", type text}, {\"Frequency_3\", type text}, {\"TimeSearching\", type text}, {\"TimeAnswering\", type text}, {\"ProfessionalTech\", type text}, {\"Industry\", type text}, {\"ConvertedCompYearly\", type text}}),",
                 "    #\"Age replace years\" = Table.ReplaceValue(#\"Changed Type\",\"years old\",\"\",Replacer.ReplaceText,{\"Age\"}),",
@@ -1463,9 +1470,11 @@
                 "    #\"ConvertedComp remove .0\" = Table.ReplaceValue(#\"CompTotal to decimal\",\".0\",\"\",Replacer.ReplaceText,{\"ConvertedCompYearly\"}),",
                 "    #\"ConvertedComp to decimal\" = Table.TransformColumnTypes(#\"ConvertedComp remove .0\",{{\"ConvertedCompYearly\", type number}}),",
                 "    #\"Replaced Value\" = Table.ReplaceValue(#\"ConvertedComp to decimal\",\"2 to 9\",\"2 to 19\",Replacer.ReplaceText,{\"OrgSize\"}),",
-                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Replaced Value\",\"10 to 19\",\"2 to 19\",Replacer.ReplaceText,{\"OrgSize\"})",
+                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Replaced Value\",\"10 to 19\",\"2 to 19\",Replacer.ReplaceText,{\"OrgSize\"}),",
+                "    #\"Replaced Value2\" = Table.ReplaceValue(#\"Replaced Value1\",\"Hybrid (some remote, some in-person)\",\"Hybrid\",Replacer.ReplaceText,{\"RemoteWork\"}),",
+                "    #\"Filtered Rows\" = Table.SelectRows(#\"Replaced Value2\", each true)",
                 "in",
-                "    #\"Replaced Value1\""
+                "    #\"Filtered Rows\""
               ],
               "type": "m"
             }
@@ -2082,10 +2091,6 @@
         "name": "positions",
         "annotations": [
           {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
-          },
-          {
             "name": "PBI_ResultType",
             "value": "Table"
           }
@@ -2216,10 +2221,6 @@
         "name": "education level",
         "annotations": [
           {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
-          },
-          {
             "name": "PBI_ResultType",
             "value": "Table"
           }
@@ -2293,10 +2294,6 @@
       {
         "name": "languages sympathy",
         "annotations": [
-          {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
-          },
           {
             "name": "PBI_ResultType",
             "value": "Table"
@@ -2399,6 +2396,67 @@
                 "    #\"Filtered Rows\" = Table.SelectRows(#\"Removed Columns1\", each ([ConvertedCompYearly] <> null))",
                 "in",
                 "    #\"Filtered Rows\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "OrgSize sort",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Sort Order",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "4c1eb481-f23c-4b55-8e1e-6de631d2ac8c",
+            "sourceColumn": "Sort Order",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "OrgSize",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "bb6b5851-7205-4a93-887f-7db12122d9e6",
+            "sourceColumn": "OrgSize",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "f2b04981-ed43-477e-8497-1d77dbee44c2",
+        "partitions": [
+          {
+            "name": "OrgSize sort",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Excel.Workbook(File.Contents(\"D:\\Projects\\Stack-overflow-dev-survey-analysis\\data\\orgsize_sort.xlsx\"), null, true),",
+                "    Sheet1_Sheet = Source{[Item=\"Sheet1\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(Sheet1_Sheet,{{\"Column1\", Int64.Type}, {\"Column2\", type text}}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Changed Type\",{{\"Column2\", \"OrgSize\"}, {\"Column1\", \"Sort Order\"}})",
+                "in",
+                "    #\"Renamed Columns\""
               ],
               "type": "m"
             }

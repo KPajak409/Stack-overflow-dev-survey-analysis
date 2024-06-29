@@ -1,3 +1,9 @@
+# Stack Overflow Developer survey analysis
+Project aims to visualize and analyze data from survey taken by Stack Overflow. It contains wide coveraged information about developers in Information Technology industry.
+The easiest and fastest way to see the results is through downloading report in it's pdf, static version i.e there is no interaction between Power BI elements. It can be found in the link below.
+\
+https://drive.google.com/drive/folders/1p98RDD5DDXIZki91wlc8A2342jdv7c3c?usp=sharing
+
 # Data source
 Data utilized in this project comes from widely accesible source i.e [Stack Overflow site](https://insights.stackoverflow.com/survey/). It is annual developer survey performed by Stack Overflow, which is the best known Q&A platform that millions of people visit every month to ask questions, learn, and share technical knowledge. The questions asked each year are selected accordingly to raising trends in Information Technology area and due to it's dynamically changing nature they may differ significantly every year.
 ## Objectives
@@ -21,4 +27,5 @@ Data is placed in two files in csv format.
 
 ## Cleaning steps
 Stack Overflow stands that dataset is complete and cleaned. By delving into data myself, I was able to find some minor possibilities, to improve the overall quality by applying some of the cleaning steps. Additional steps was also sometimes necessary to visualize data correctly by Power BI. The detailed documentation can be found under descriptive name.
+
 

@@ -4,14 +4,14 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 438,
-        "y": 603
+        "x": 0,
+        "y": 1714.6404152890625
       },
       "nodes": [
         {
           "location": {
-            "x": 690,
-            "y": 2562.632080078125
+            "x": 298.48501899999951,
+            "y": 2337.5669555078116
           },
           "nodeIndex": "survey_results_schema",
           "nodeLineageTag": "db86982c-1f0d-4566-9379-90cd9b38ca23",
@@ -19,12 +19,12 @@
             "height": 224,
             "width": 234
           },
-          "zIndex": 4
+          "zIndex": 7
         },
         {
           "location": {
             "x": 632,
-            "y": 1814.132080078125
+            "y": 2324.2647705078125
           },
           "nodeIndex": "power_query_processed",
           "nodeLineageTag": "e1663095-646f-4594-afd0-f6f2c1168956",
@@ -32,36 +32,38 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 1
         },
         {
           "location": {
-            "x": 1468,
-            "y": 1020.265380859375
+            "x": 952.4757489999995,
+            "y": 1714.6404152890625
           },
           "nodeIndex": "employment_salary",
+          "nodeLineageTag": "dc1417dd-e1c7-4428-bcf4-dc5db4381fce",
           "size": {
             "height": 300,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 2
         },
         {
           "location": {
-            "x": 1459,
-            "y": 2048.085205078125
+            "x": 1044.4547259999995,
+            "y": 2554.6747735078125
           },
           "nodeIndex": "education level",
+          "nodeLineageTag": "29b007be-dd57-4d0d-9732-6bd72d190ce7",
           "size": {
             "height": 104,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 3
         },
         {
           "location": {
-            "x": 1286,
-            "y": 1761.936767578125
+            "x": 1293.086244,
+            "y": 1885.8691600078121
           },
           "nodeIndex": "Measures table",
           "nodeLineageTag": "c909f9e3-8d7f-445d-8bd6-8730928b3cb2",
@@ -69,36 +71,50 @@
             "height": 200,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 4
         },
         {
           "location": {
-            "x": 1465,
-            "y": 1338.303955078125
+            "x": 945.93262699999946,
+            "y": 2059.2524045078126
           },
           "nodeIndex": "languages sympathy",
-          "nodeLineageTag": "f155da99-83f4-4139-a035-fd4e52351c05",
+          "nodeLineageTag": "c6881ee9-cb8a-4c2a-84e1-3a4d158c59e2",
           "size": {
             "height": 176,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 5
         },
         {
           "location": {
-            "x": 315,
-            "y": 2285.132080078125
+            "x": 1046.6546930000009,
+            "y": 2715.5445255078121
           },
           "nodeIndex": "positions",
+          "nodeLineageTag": "188915db-3bf8-4ada-b335-cfe3896a349d",
           "size": {
             "height": 176,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 1276.9598243086607,
+            "y": 2286.8911999968941
+          },
+          "nodeIndex": "OrgSize sort",
+          "nodeLineageTag": "f2b04981-ed43-477e-8497-1d77dbee44c2",
+          "size": {
+            "height": 142.17248800000016,
+            "width": 234
+          },
+          "zIndex": 8
         }
       ],
       "name": "All tables",
-      "zoomValue": 100,
+      "zoomValue": 70.955543900968763,
       "pinKeyFieldsToTop": false,
       "showExtraHeaderInfo": false,
       "hideKeyFieldsWhenCollapsed": false,
